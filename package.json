@@ -1,0 +1,22 @@
+{
+  "name": "cazan",
+  "version": "0.1.0",
+  "description": "A JS lib that helps you to build games in webpages.",
+  "main": "src/main.ts",
+  "repository": "https://github.com/cazanjs/cazan.git",
+  "author": "Welpike <welpike@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.3",
+    "rollup": "^3.28.1",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.6.2"
+  }
+}
