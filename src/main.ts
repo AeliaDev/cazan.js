@@ -2,6 +2,7 @@ import * as exceptions from './exceptions/index'
 import {setup} from "./setup"
 import * as shapes from "./shapes/index"
 import * as styles from "./styles"
+import * as types from "./types/index"
 import * as utils from './utils/index'
 
 /*
@@ -12,5 +13,6 @@ export {
     setup,
     shapes,
     styles,
+    types,
     utils
 }

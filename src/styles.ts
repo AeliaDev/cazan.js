@@ -1,7 +1,8 @@
+import {CRenderingContext} from "./types/global";
 import {validateRgbaString} from "./utils/validations";
 import {InvalidArgumentException} from "./exceptions/index";
 
-export function setFill(ctx: RenderingContext, rgba: string) {
+export function setFill(ctx: CRenderingContext, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
         if ("fillStyle" in ctx) {
@@ -12,7 +13,7 @@ export function setFill(ctx: RenderingContext, rgba: string) {
     }
 }
 
-export function setStroke(ctx: RenderingContext, rgba: string) {
+export function setStroke(ctx: CRenderingContext, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
         if ("fillStyle" in ctx) {

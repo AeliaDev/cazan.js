@@ -1,9 +1,10 @@
+import {CRenderingContext} from "../types/global";
 import {Shape} from "./shape";
 import {Dimensions, Position} from "../types/shapes";
 
 export class LineShape extends Shape {
     constructor(
-        protected ctx: RenderingContext,
+        protected ctx: CRenderingContext,
         protected position: Position,
         protected dimensions: Dimensions
     ) {

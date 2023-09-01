@@ -1,8 +1,9 @@
+import {CRenderingContext} from "../types/global";
 import {Dimensions, Position} from "../types/shapes"
 
 export class Shape {
     constructor(
-        protected ctx: RenderingContext,
+        protected ctx: CRenderingContext,
         protected position: Position,
         protected dimensions: Dimensions
     ) {
