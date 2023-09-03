@@ -15,6 +15,12 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/cazan.min.js':
                 filename = '../dist/cazan.min.js'
                 content_type = 'text/javascript'
+            elif self.path == '/style.css':
+                filename = 'style.css'
+                content_type = 'text/css'
+            elif self.path == '/img.png':
+                filename = 'img.png'
+                content_type = 'image/png'
             else:
                 self.send_response(404)
                 self.end_headers()
