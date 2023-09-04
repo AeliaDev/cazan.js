@@ -21,6 +21,9 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/img.png':
                 filename = 'img.png'
                 content_type = 'image/png'
+            elif self.path == '/audio.mp3':
+                filename = 'audio.mp3'
+                content_type = 'audio/mpeg'
             else:
                 self.send_response(404)
                 self.end_headers()

@@ -51,6 +51,15 @@ func pngHandler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(string(content)))
 }
 
+func mp3Handler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "audio/mpeg")
+    content, err := os.ReadFile("audio.mp3")
+    if err != nil {
+        log.Fatal(err)
+    }
+    w.Write([]byte(string(content)))
+}
+
 func main() {
     http.HandleFunc("/", indexHandler)
     http.HandleFunc("/app.js", jsHandler)
