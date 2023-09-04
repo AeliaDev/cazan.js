@@ -65,6 +65,8 @@ func main() {
     http.HandleFunc("/app.js", jsHandler)
     http.HandleFunc("/cazan.min.js", cazanJsHandler)
     http.HandleFunc("/style.css", cssHandler)
+    http.HandleFunc("/img.png", pngHandler)
+    http.HandleFunc("/audio.mp3", mp3Handler)
     fmt.Println("Server started at http://localhost:8080/")
     http.ListenAndServe(":8080", nil)
 }
