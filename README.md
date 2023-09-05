@@ -10,8 +10,9 @@
 ``yarn``
 3) Build assets
 ``yarn run build``
-4) Launch tests server (yo need go on your machine!)
-``cd tests && go run server.go``
+4) Launch tests server
+   - With Go ``cd tests && go run server.go``
+   - With Python ``cd tests && python server.py``
 
 ## Use
 

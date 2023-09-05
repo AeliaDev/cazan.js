@@ -1,3 +1,4 @@
+import * as assets from './assets'
 import * as exceptions from './exceptions/index'
 import {setup} from "./setup"
 import * as shapes from "./shapes/index"
@@ -10,6 +11,7 @@ import * as utils from './utils/index'
  * the imports will be optimized for better usage in user code
  */
 export {
+    assets,
     exceptions,
     setup,
     shapes,
