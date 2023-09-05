@@ -1,17 +1,18 @@
 import {Dimensions, Position} from "../types/shapes";
 import {NativeImage} from "./native-image";
+import {CRenderingContext} from "../types/global";
 
 export class Image {
     img = new NativeImage();
 
     /**
-     * @param {RenderingContext} ctx
+     * @param {CRenderingContext} ctx
      * @param {string} src
      * @param {Position} position
      * @param {Dimensions} dimensions
      */
     constructor(
-        protected ctx: RenderingContext,
+        protected ctx: CRenderingContext,
         protected src: string,
         protected position: Position,
         protected dimensions: Dimensions,
@@ -26,17 +27,13 @@ export class Image {
      * Displays the image on the canvas.
      */
     display() {
-        if ("drawImage" in this.ctx) {
-            this.ctx.drawImage(this.img, this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
-        }
+        this.ctx.drawImage(this.img, this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
     }
 
     /**
      * Hides the image on the canvas.
      */
     hide() {
-        if ("clearRect" in this.ctx) {
-            this.ctx.clearRect(this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
-        }
+        this.ctx.clearRect(this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
     }
 }

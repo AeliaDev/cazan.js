@@ -1,7 +1,6 @@
 import {CRenderingContext} from "../types/global";
 import {Shape} from "./shape";
 import {Dimensions, Position} from "../types/shapes";
-import {WrongContextException} from "../exceptions";
 
 export class LineShape extends Shape {
     constructor(
@@ -13,23 +12,10 @@ export class LineShape extends Shape {
     }
 
     display() {
-        // TODO: refacto this
-        "beginPath" in this.ctx ? this.ctx.beginPath() : new WrongContextException({
-            filename: "cazan/shapes/line-shape.ts",
-            message: "'CanvasRenderingContext2D' for use 'beginPath()'"
-        })
-        "moveTo" in this.ctx ? this.ctx.moveTo(this.position.x, this.position.y) : new WrongContextException({
-            filename: "cazan/shapes/line-shape.ts",
-            message: "'CanvasRenderingContext2D' for use 'moveTo()'"
-        })
-        "lineTo" in this.ctx ? this.ctx.lineTo(this.dimensions.x, this.dimensions.y) : new WrongContextException({
-            filename: "cazan/shapes/line-shape.ts",
-            message: "'CanvasRenderingContext2D' for use 'lineTo()'"
-        })
-        "stroke" in this.ctx ? this.ctx.stroke() : new WrongContextException({
-            filename: "cazan/shapes/line-shape.ts",
-            message: "'CanvasRenderingContext2D' for use 'stroke()'"
-        })
+        this.ctx.beginPath()
+        this.ctx.moveTo(this.position.x, this.position.y)
+        this.ctx.lineTo(this.dimensions.x, this.dimensions.y)
+        this.ctx.stroke()
     }
 
     hide() {

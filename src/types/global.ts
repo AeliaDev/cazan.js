@@ -1,2 +1,2 @@
 
-export declare type CRenderingContext = CanvasRenderingContext2D | WebGLRenderingContext | WebGL2RenderingContext
+export declare type CRenderingContext = CanvasRenderingContext2D  // | WebGLRenderingContext | WebGL2RenderingContext
