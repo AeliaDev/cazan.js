@@ -32,10 +32,10 @@ window.addEventListener("load", runApp);
 5) Setup cazan & begin to code !
 ```js
 function runApp() {
-    let ctx = cazan.setup("#yourCanvasId", "2d")
+    let ctx, canvas = cazan.setup("#yourCanvasId", "2d")
     // ...
 }
 ```
-There is a little demonstration of what's possible to do now on `./tests/app.js`!
+There is a little demonstration of what's possible to do now in `./tests/app.js`!
 
 More details in `./tests`.
