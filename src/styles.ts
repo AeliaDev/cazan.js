@@ -3,6 +3,13 @@ import {InvalidArgumentException} from "./exceptions/index";
 import {LineStyleInterface, TextStyleInterface} from "./types/styles";
 import {validateRgbaString} from "./utils/validations";
 
+/**
+ * Set fill for drawing shapes.
+ *
+ * @param ctx {CRenderingContext}
+ * @param rgba {string} -> regex verification : rgba(XXX,XXX,XXX,X.XXX)
+ * @throws InvalidArgumentException
+ */
 export function setFill(ctx: CRenderingContext, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
@@ -12,6 +19,13 @@ export function setFill(ctx: CRenderingContext, rgba: string) {
     }
 }
 
+/**
+ * Set stroke for drawing shapes.
+ *
+ * @param ctx {CRenderingContext}
+ * @param rgba {string} -> regex verification : rgba(XXX,XXX,XXX,X.XXX)
+ * @throws InvalidArgumentException
+ */
 export function setStroke(ctx: CRenderingContext, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
@@ -21,6 +35,12 @@ export function setStroke(ctx: CRenderingContext, rgba: string) {
     }
 }
 
+/**
+ * Set line style.
+ *
+ * @param ctx {CRenderingContext}
+ * @param options {LineStyleInterface}
+ */
 export function setLineStyle(ctx: CRenderingContext, options: LineStyleInterface) {
     options.cap ? ctx.lineCap = options.cap : null
     options.width ? ctx.lineWidth = options.width : null
@@ -30,6 +50,12 @@ export function setLineStyle(ctx: CRenderingContext, options: LineStyleInterface
     options.dashOffset ? ctx.lineDashOffset = options.dashOffset : null
 }
 
+/**
+ * Set text style.
+ *
+ * @param ctx {CRenderingContext}
+ * @param options {TextStyleInterface}
+ */
 export function setTextStyle(ctx: CRenderingContext, options: TextStyleInterface) {
     options.font ? ctx.font = options.font : null
     options.textAlign ? ctx.textAlign = options.textAlign : null

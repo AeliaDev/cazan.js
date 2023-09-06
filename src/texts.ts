@@ -1,16 +1,22 @@
 import {CRenderingContext} from "./types/global";
 import {TextInterface} from "./types/texts";
 
-export function displayText(options: TextInterface) {
+/**
+ * Display text
+ *
+ * @param ctx {CRenderingContext}
+ * @param options {LineStyleInterface}
+ */
+export function displayText(ctx: CRenderingContext, options: TextInterface) {
     if(options.type === "fill") {
-        options.ctx.fillText(
+        ctx.fillText(
             options.text,
             options.x,
             options.y,
             options.maxWidth ? options.maxWidth : undefined
         )
     } else if(options.type === "stroke") {
-        options.ctx.strokeText(
+        ctx.strokeText(
             options.text,
             options.x,
             options.y,
@@ -19,6 +25,13 @@ export function displayText(options: TextInterface) {
     }
 }
 
+/**
+ * Measure text
+ *
+ * @param ctx {CRenderingContext}
+ * @param text {string}
+ * @returns {TextMetrics}
+ */
 export function textMeasurement(ctx: CRenderingContext, text: string) {
-    ctx.measureText(text)
+    return ctx.measureText(text)
 }
