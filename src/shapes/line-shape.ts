@@ -6,11 +6,15 @@ export class LineShape extends Shape {
     constructor(
         protected ctx: CRenderingContext,
         protected position: Position,
-        protected dimensions: Dimensions
+        protected dimensions: Dimensions,
+        protected toDisplay?: boolean
     ) {
-        super(ctx, position, dimensions)
+        super(ctx, position, dimensions, toDisplay)
     }
 
+    /**
+     * Displays the line.
+     */
     display() {
         this.ctx.beginPath()
         this.ctx.moveTo(this.position.x, this.position.y)
@@ -18,6 +22,12 @@ export class LineShape extends Shape {
         this.ctx.stroke()
     }
 
+    /**
+     * Hide the line.
+     *
+     * ----------------------------------
+     * **Warning**: *not implemented yet*
+     */
     hide() {
         throw new Error("NotImplemented: LineShape.hide() isn't implemented yet.")
     }

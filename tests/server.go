@@ -26,6 +26,15 @@ func jsHandler(w http.ResponseWriter, r *http.Request) {
 
 func cazanJsHandler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "text/javascript")
+    content, err := os.ReadFile("../dist/cazan.js")
+    if err != nil {
+        log.Fatal(err)
+    }
+    w.Write([]byte(string(content)))
+}
+
+func cazanMinJsHandler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "text/javascript")
     content, err := os.ReadFile("../dist/cazan.min.js")
     if err != nil {
         log.Fatal(err)
@@ -63,7 +72,8 @@ func mp3Handler(w http.ResponseWriter, r *http.Request) {
 func main() {
     http.HandleFunc("/", indexHandler)
     http.HandleFunc("/app.js", jsHandler)
-    http.HandleFunc("/cazan.min.js", cazanJsHandler)
+    http.HandleFunc("/cazan.js", cazanJsHandler)
+    http.HandleFunc("/cazan.min.js", cazanMinJsHandler)
     http.HandleFunc("/style.css", cssHandler)
     http.HandleFunc("/img.png", pngHandler)
     http.HandleFunc("/audio.mp3", mp3Handler)

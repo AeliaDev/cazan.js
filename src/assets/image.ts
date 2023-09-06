@@ -7,6 +7,7 @@ export class Image {
 
     /**
      * @param {CRenderingContext} ctx
+     * @param {boolean} toDisplay = true
      * @param {string} src
      * @param {Position} position
      * @param {Dimensions} dimensions
@@ -16,10 +17,11 @@ export class Image {
         protected src: string,
         protected position: Position,
         protected dimensions: Dimensions,
+        protected toDisplay?: boolean
     ) {
         this.img.src = src;
         this.img.onload = () => {
-            this.display()
+            typeof toDisplay === "undefined" || toDisplay ?  this.display() : null
         }
     }
 

@@ -12,6 +12,9 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/app.js':
                 filename = 'app.js'
                 content_type = 'text/javascript'
+            elif self.path == '/cazan.js':
+                filename = '../dist/cazan.js'
+                content_type = 'text/javascript'
             elif self.path == '/cazan.min.js':
                 filename = '../dist/cazan.min.js'
                 content_type = 'text/javascript'
