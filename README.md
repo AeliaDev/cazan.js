@@ -22,6 +22,7 @@
 ```js
 import * as cazan from "/path/to/cazan/bundled/file.js"
 ```
+Note: we advise to use the non-minified bundled file in development and the minified one in production.  
 4) Create a function that you will call in an event listener on window of type "load" that calls this function.
 ```js
 function runApp() {
