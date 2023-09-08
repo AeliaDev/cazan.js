@@ -29,13 +29,13 @@ export class Image {
      * Displays the image on the canvas.
      */
     display() {
-        this.game.get_ctx().drawImage(this.img, this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
+        this.game.getCtx().drawImage(this.img, this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
     }
 
     /**
      * Hides the image on the canvas.
      */
     hide() {
-        this.game.get_ctx().clearRect(this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
+        this.game.getCtx().clearRect(this.position.x, this.position.y, this.dimensions.x, this.dimensions.y)
     }
 }

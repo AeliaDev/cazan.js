@@ -23,7 +23,7 @@ export class Shape {
      * Displays the shape.
      */
     display() {
-        this.game.get_ctx().fillRect(
+        this.game.getCtx().fillRect(
             this.position.x,
             this.position.y,
             this.dimensions.x,
@@ -35,7 +35,7 @@ export class Shape {
      * Hide the shape.
      */
     hide() {
-        this.game.get_ctx().clearRect(
+        this.game.getCtx().clearRect(
             this.position.x,
             this.position.y,
             this.dimensions.x,

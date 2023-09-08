@@ -16,10 +16,10 @@ export class LineShape extends Shape {
      * Displays the line.
      */
     display() {
-        this.game.get_ctx().beginPath()
-        this.game.get_ctx().moveTo(this.position.x, this.position.y)
-        this.game.get_ctx().lineTo(this.dimensions.x, this.dimensions.y)
-        this.game.get_ctx().stroke()
+        this.game.getCtx().beginPath()
+        this.game.getCtx().moveTo(this.position.x, this.position.y)
+        this.game.getCtx().lineTo(this.dimensions.x, this.dimensions.y)
+        this.game.getCtx().stroke()
     }
 
     /**

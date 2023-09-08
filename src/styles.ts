@@ -13,7 +13,7 @@ import {validateRgbaString} from "./utils/validations";
 export function setFill(game: Game, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
-        game.get_ctx().fillStyle = rgba
+        game.getCtx().fillStyle = rgba
     } else {
         new InvalidArgumentException({filename: "cazan/styles.ts", message: `invalid RGBA string : ${rgba}`})
     }
@@ -29,7 +29,7 @@ export function setFill(game: Game, rgba: string) {
 export function setStroke(game: Game, rgba: string) {
     const isValidRgba = validateRgbaString(rgba)
     if(isValidRgba) {
-        game.get_ctx().strokeStyle = rgba
+        game.getCtx().strokeStyle = rgba
     } else {
         new InvalidArgumentException({filename: "cazan/styles.ts", message: `invalid RGBA string : ${rgba}`})
     }
@@ -42,12 +42,12 @@ export function setStroke(game: Game, rgba: string) {
  * @param options {LineStyleInterface}
  */
 export function setLineStyle(game: Game, options: LineStyleInterface) {
-    options.cap ? game.get_ctx().lineCap = options.cap : null
-    options.width ? game.get_ctx().lineWidth = options.width : null
-    options.join ? game.get_ctx().lineJoin = options.join : null
-    options.miterLimit ? game.get_ctx().miterLimit = options.miterLimit : null
-    options.dash ? game.get_ctx().setLineDash(options.dash) : null
-    options.dashOffset ? game.get_ctx().lineDashOffset = options.dashOffset : null
+    options.cap ? game.getCtx().lineCap = options.cap : null
+    options.width ? game.getCtx().lineWidth = options.width : null
+    options.join ? game.getCtx().lineJoin = options.join : null
+    options.miterLimit ? game.getCtx().miterLimit = options.miterLimit : null
+    options.dash ? game.getCtx().setLineDash(options.dash) : null
+    options.dashOffset ? game.getCtx().lineDashOffset = options.dashOffset : null
 }
 
 /**
@@ -57,8 +57,8 @@ export function setLineStyle(game: Game, options: LineStyleInterface) {
  * @param options {TextStyleInterface}
  */
 export function setTextStyle(game: Game, options: TextStyleInterface) {
-    options.font ? game.get_ctx().font = options.font : null
-    options.textAlign ? game.get_ctx().textAlign = options.textAlign : null
-    options.textBaseline ? game.get_ctx().textBaseline = options.textBaseline : null
-    options.direction ? game.get_ctx().direction = options.direction : null
+    options.font ? game.getCtx().font = options.font : null
+    options.textAlign ? game.getCtx().textAlign = options.textAlign : null
+    options.textBaseline ? game.getCtx().textBaseline = options.textBaseline : null
+    options.direction ? game.getCtx().direction = options.direction : null
 }

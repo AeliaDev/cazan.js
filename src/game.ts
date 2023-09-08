@@ -22,7 +22,7 @@ export class Game {
      * @param width
      * @param height
      */
-    set_size(width: number, height: number) {
+    setSize(width: number, height: number) {
         this.canvas.width = width
         this.canvas.height = height
     }
@@ -30,21 +30,21 @@ export class Game {
     /**
      * Returns the size of the canvas.
      */
-    get_size(): {width: number, height: number} {
+    getSize(): {width: number, height: number} {
         return {width: this.canvas.width, height: this.canvas.height}
     }
 
     /**
      * Returns the canvas.
      */
-    get_canvas(): HTMLCanvasElement {
+    getCanvas(): HTMLCanvasElement {
         return this.canvas
     }
 
     /**
      * Returns the context.
      */
-    get_ctx(): CRenderingContext {
+    getCtx(): CRenderingContext {
         return this.ctx
     }
 }

@@ -9,14 +9,14 @@ import {TextInterface} from "./types/texts";
  */
 export function displayText(game: Game, options: TextInterface) {
     if(options.type === "fill") {
-        game.get_ctx().fillText(
+        game.getCtx().fillText(
             options.text,
             options.x,
             options.y,
             options.maxWidth ? options.maxWidth : undefined
         )
     } else if(options.type === "stroke") {
-        game.get_ctx().strokeText(
+        game.getCtx().strokeText(
             options.text,
             options.x,
             options.y,
@@ -33,5 +33,5 @@ export function displayText(game: Game, options: TextInterface) {
  * @returns {TextMetrics}
  */
 export function textMeasurement(game: Game, text: string) {
-    return game.get_ctx().measureText(text)
+    return game.getCtx().measureText(text)
 }
