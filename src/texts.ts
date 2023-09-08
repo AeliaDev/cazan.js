@@ -1,22 +1,22 @@
-import {CRenderingContext} from "./types/global";
+import {Game} from "./game";
 import {TextInterface} from "./types/texts";
 
 /**
  * Display text
  *
- * @param ctx {CRenderingContext}
+ * @param game {Game}
  * @param options {LineStyleInterface}
  */
-export function displayText(ctx: CRenderingContext, options: TextInterface) {
+export function displayText(game: Game, options: TextInterface) {
     if(options.type === "fill") {
-        ctx.fillText(
+        game.getCtx().fillText(
             options.text,
             options.x,
             options.y,
             options.maxWidth ? options.maxWidth : undefined
         )
     } else if(options.type === "stroke") {
-        ctx.strokeText(
+        game.getCtx().strokeText(
             options.text,
             options.x,
             options.y,
@@ -28,10 +28,10 @@ export function displayText(ctx: CRenderingContext, options: TextInterface) {
 /**
  * Measure text
  *
- * @param ctx {CRenderingContext}
+ * @param game {Game}
  * @param text {string}
  * @returns {TextMetrics}
  */
-export function textMeasurement(ctx: CRenderingContext, text: string) {
-    return ctx.measureText(text)
+export function textMeasurement(game: Game, text: string) {
+    return game.getCtx().measureText(text)
 }

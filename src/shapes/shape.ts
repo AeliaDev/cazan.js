@@ -1,17 +1,17 @@
-import {CRenderingContext} from "../types/global";
+import {Game} from "../game";
 import {Dimensions, Position} from "../types/shapes"
 
 export class Shape {
     /**
      * Create new shape and displays it (by default)
      *
-     * @param {CRenderingContext} ctx
+     * @param {Game} game
      * @param {boolean} toDisplay = true
      * @param {Position} position
      * @param {Dimensions} dimensions
      */
     constructor(
-        protected ctx: CRenderingContext,
+        protected game: Game,
         protected position: Position,
         protected dimensions: Dimensions,
         protected toDisplay?: boolean
@@ -23,7 +23,7 @@ export class Shape {
      * Displays the shape.
      */
     display() {
-        this.ctx.fillRect(
+        this.game.getCtx().fillRect(
             this.position.x,
             this.position.y,
             this.dimensions.x,
@@ -35,7 +35,7 @@ export class Shape {
      * Hide the shape.
      */
     hide() {
-        this.ctx.clearRect(
+        this.game.getCtx().clearRect(
             this.position.x,
             this.position.y,
             this.dimensions.x,
