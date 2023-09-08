@@ -13,6 +13,7 @@ function runApp() {
     // will be moved in Game
     movingShapes.push(testRect)
     movingShapes.push(testLine)
+    movingShapes.push(image)
 
     cazan.events.keyboard.setShortcutHandler({
         on: 'keydown',
