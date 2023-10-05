@@ -42,4 +42,12 @@ export class Shape {
             this.dimensions.y
         )
     }
+
+    getPosition() {
+        return this.position
+    }
+
+    setPosition(position: Position) {
+        this.position = position
+    }
 }
