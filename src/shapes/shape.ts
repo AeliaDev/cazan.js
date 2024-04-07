@@ -17,6 +17,7 @@ export class Shape {
         protected toDisplay?: boolean
     ) {
         typeof toDisplay === "undefined" || toDisplay ? this.display() : null
+        this.game.registerShapes([this])
     }
 
     /**
