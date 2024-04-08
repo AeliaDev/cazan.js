@@ -10,13 +10,16 @@ import {Image} from "./assets";
  */
 export class Game {
     private shapes: (Shape | Image)[] = []
+    private fps: number
 
     /**
      * Create an instance of Game.
      * @param ctx
      * @param canvas
+     * @param fps Frames per second
      */
-    constructor(protected ctx: CRenderingContext, protected canvas: HTMLCanvasElement) {
+    constructor(protected ctx: CRenderingContext, protected canvas: HTMLCanvasElement, fps: number = 100) {
+        this.fps = fps  // maybe will be updated
     }
 
     /**
@@ -68,7 +71,7 @@ export class Game {
             this.shapes.forEach(shape => {
                 shape.display()
             })
-        }, 10)
+        }, this.fps * 1e-3)
     }
 
     /**
@@ -77,13 +80,19 @@ export class Game {
      *
      * @param shapes
      */
-    registerShapes(shapes: (Shape | Image)[]): void {
-        shapes.forEach(shape => {
-            this.shapes.push(shape)
-        })
+    registerShapes(shapes: Shape | Image | (Shape | Image)[]): void {
+        if(Array.isArray(shapes)) {
+            this.shapes.concat(shapes)
+            return
+        }
+        this.shapes.push(shapes)
     }
 
     /**
      * to do : implement unregisterShape()
      */
+
+    setFps(newFps: number) {
+        this.fps = newFps
+    }
 }
