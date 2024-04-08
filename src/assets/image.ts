@@ -23,7 +23,7 @@ export class Image {
         this.img.onload = () => {
             typeof toDisplay === "undefined" || toDisplay ?  this.display() : null
         }
-        this.game.registerShapes([this])
+        this.game.registerShapes(this)
     }
 
     /**
