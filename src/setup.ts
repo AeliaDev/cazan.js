@@ -15,8 +15,7 @@ export function setup(canvasSelector: string, context: string): Game | ContextNo
     if(canvas?.getContext) {
         setShortcutHandler({
             on: 'keydown',
-            // @ts-ignore
-            shortcutCallback: (event: Event) => (event.ctrlKey || event.metaKey) && event.key === 'r',
+            shortcutCallback: (event) => (event.ctrlKey || event.metaKey) && event.key === 'r',
             callback: () => window.location.reload()
         })
 

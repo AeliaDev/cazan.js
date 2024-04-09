@@ -9,6 +9,8 @@ function runApp() {
 
     cazan.styles.setFill(game, "rgba(255,165,0,1)")
 
+    cazan.events.io.showMsg('Game starting')
+
     // find a way to shorten this
     let testRect = new cazan.shapes.Shape(game, {x: 10, y: 10}, {x: 50, y: 50})
     let testLine = new cazan.shapes.LineShape(game, {x: 10, y: 10}, {x: 50, y: 150})

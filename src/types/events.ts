@@ -15,7 +15,7 @@ export declare interface SetKeyboardShortcutInterface {
      * @param {Event} event
      * @returns {boolean}
      */
-    shortcutCallback: (event: Event) => boolean
+    shortcutCallback: (event: KeyboardEvent) => boolean
     /**
      * The code to call when the event is detected.
      */

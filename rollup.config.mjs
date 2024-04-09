@@ -8,7 +8,7 @@ const license = "/**!\n" +
                         " */"
 
 export default {
-    input: 'src/main.ts',
+    input: 'src/index.ts',
     output: [
         {
             file: 'dist/cazan.js',

@@ -2,7 +2,7 @@
   "name": "cazan",
   "version": "0.1.0",
   "description": "A JS lib that helps you to build games in webpages.",
-  "main": "src/main.ts",
+  "main": "src/index.ts",
   "repository": "https://github.com/AeliaDev/cazan.git",
   "author": "AeliaDev & cazan contributors",
   "license": "MIT",
