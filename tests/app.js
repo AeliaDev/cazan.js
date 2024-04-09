@@ -1,3 +1,4 @@
+// here we put an alias to let you know what is from cazan but in your project you can just `import * from '...'`
 import * as cazan from "/cazan.js"
 
 function runApp() {
