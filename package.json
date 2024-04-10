@@ -9,11 +9,14 @@
   "private": false,
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.3",
+    "dts-bundle-generator": "^9.3.1",
     "rollup": "^3.28.1",
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "bundle-dts": "dts-bundle-generator dist/index.d.ts --out-file dist/cazan.d.ts --no-banner && node scripts/deleteDtsFiles.js",
+    "release": "rollup -c && yarn run bundle-dts"
   },
   "dependencies": {
     "rollup-plugin-terser": "^7.0.2",

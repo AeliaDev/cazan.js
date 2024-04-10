@@ -1,15 +1,18 @@
 // here we put an alias to let you know what is from cazan but in your project you can just `import * from '...'`
 import * as cazan from "/cazan.js"
 
-function runApp() {
+async function runApp() {
     let game = cazan.setup("#game", "2d")
     let audio = new cazan.assets.Audio(["audio.mp3"])
 
+
     game.setSize(600, 350)
+    game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
 
     cazan.styles.setFill(game, "rgba(255,165,0,1)")
 
-    cazan.events.io.showMsg('Game starting')
+    console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
+    // cazan.events.io.showMsg('Game starting')
 
     // find a way to shorten this
     let testRect = new cazan.shapes.Shape(game, {x: 10, y: 10}, {x: 50, y: 50})

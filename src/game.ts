@@ -11,6 +11,7 @@ import {Image} from "./assets";
 export class Game {
     private shapes: (Shape | Image)[] = []
     private fps: number
+    private fpsIncrement: number = 0
 
     /**
      * Create an instance of Game.
@@ -19,7 +20,7 @@ export class Game {
      * @param fps Frames per second
      */
     constructor(protected ctx: CRenderingContext, protected canvas: HTMLCanvasElement, fps: number = 100) {
-        this.fps = fps  // maybe will be updated
+        this.fps = fps
     }
 
     /**
@@ -66,12 +67,28 @@ export class Game {
      * Update frame
      */
     update(): void {
-        setInterval(() => {
-            this.clearCanvas()
-            this.shapes.forEach(shape => {
-                shape.display()
-            })
-        }, this.fps * 1e-3)
+        setInterval(async () => {
+            let screenRefreshRate = await this.getScreenRefreshRate()
+
+            if(this.fps > screenRefreshRate) {
+                if(this.fpsIncrement >= this.fps/screenRefreshRate) {
+                    this.draw()
+
+                    this.fpsIncrement = 0
+                    return
+                }
+                this.fpsIncrement++
+            }
+
+            this.draw()
+        }, 1000 / this.fps)
+    }
+
+    draw(): void {
+        this.clearCanvas()
+        this.shapes.forEach(shape => {
+            shape.display()
+        })
     }
 
     /**
@@ -94,5 +111,21 @@ export class Game {
 
     setFps(newFps: number) {
         this.fps = newFps
+    }
+
+    getCurrentFps(): number {
+        return this.fps
+    }
+
+    /**
+     * Returns the user's screen refresh rate.
+     * @return {Promise<number>} fps
+     */
+    async getScreenRefreshRate(): Promise<number> {
+        return await new Promise(resolve =>
+            requestAnimationFrame(t1 =>
+                requestAnimationFrame(t2 => resolve(Math.round(1000 / (t2 - t1))))
+            )
+        )
     }
 }
