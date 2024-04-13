@@ -1,15 +1,21 @@
-/**
- * Nota: these functions will be changed to add a popup in html that will be customizable by the game developer
- */
+import {Popup} from "../utils"
+import {IOEventInterface, PopupInterface} from "../types/events"
 
-export function showMsg(msg: string) {
-    alert(msg)
+async function ioEventBase(options: PopupInterface) {
+    const popup = new Popup({...options})
+    const response = await popup.getResponse()
+    popup.removePopup()
+    return response
 }
 
-export function getUserConfirm(msg: string) {
-    return confirm(msg)
+export async function showMsg(options: IOEventInterface) {
+    return await ioEventBase({...options, type: "show"})
 }
 
-export function getUserInput(msg: string, defaultValue?: string) {
-    return prompt(msg, defaultValue)
+export async function getUserConfirm(options: IOEventInterface) {
+    return await ioEventBase({...options, type: "confirm"})
+}
+
+export async function getUserInput(options: IOEventInterface) {
+    return await ioEventBase({...options, type: "prompt"})
 }
