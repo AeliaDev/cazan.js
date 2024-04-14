@@ -2,6 +2,7 @@
 
 Cazan provides a system of popups to simplify I/O interactions with the user.
 
+
 ## Using the events.io API
 
 You can use the cazan I/O API to use popups. We are using the ``cazan.events.io`` namespace in this section.
