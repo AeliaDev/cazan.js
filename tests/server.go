@@ -42,15 +42,6 @@ func cazanMinJsHandler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(string(content)))
 }
 
-func cssHandler(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set("Content-Type", "text/css")
-    content, err := os.ReadFile("style.css")
-    if err != nil {
-        log.Fatal(err)
-    }
-    w.Write([]byte(string(content)))
-}
-
 func pngHandler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "image/png")
     content, err := os.ReadFile("img.png")
@@ -74,7 +65,6 @@ func main() {
     http.HandleFunc("/app.js", jsHandler)
     http.HandleFunc("/cazan.js", cazanJsHandler)
     http.HandleFunc("/cazan.min.js", cazanMinJsHandler)
-    http.HandleFunc("/style.css", cssHandler)
     http.HandleFunc("/img.png", pngHandler)
     http.HandleFunc("/audio.mp3", mp3Handler)
     fmt.Println("Server started at http://localhost:8080/")

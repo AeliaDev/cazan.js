@@ -1,5 +1,5 @@
-import {terser} from "rollup-plugin-terser";
-import typescript from '@rollup/plugin-typescript';
+import {terser} from "rollup-plugin-terser"
+import typescript from '@rollup/plugin-typescript'
 
 const license = "/**!\n" +
                         " * Cazan  v0.1.0 (https://github.com/AeliaDev/cazan)\n" +
@@ -8,7 +8,7 @@ const license = "/**!\n" +
                         " */"
 
 export default {
-    input: 'src/main.ts',
+    input: 'src/index.ts',
     output: [
         {
             file: 'dist/cazan.js',

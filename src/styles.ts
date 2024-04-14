@@ -11,8 +11,7 @@ import {validateRgbaString} from "./utils/validations";
  * @throws InvalidArgumentException
  */
 export function setFill(game: Game, rgba: string) {
-    const isValidRgba = validateRgbaString(rgba)
-    if(isValidRgba) {
+    if(validateRgbaString(rgba)) {
         game.getCtx().fillStyle = rgba
     } else {
         new InvalidArgumentException({filename: "cazan/styles.ts", message: `invalid RGBA string : ${rgba}`})
@@ -27,8 +26,7 @@ export function setFill(game: Game, rgba: string) {
  * @throws InvalidArgumentException
  */
 export function setStroke(game: Game, rgba: string) {
-    const isValidRgba = validateRgbaString(rgba)
-    if(isValidRgba) {
+    if(validateRgbaString(rgba)) {
         game.getCtx().strokeStyle = rgba
     } else {
         new InvalidArgumentException({filename: "cazan/styles.ts", message: `invalid RGBA string : ${rgba}`})

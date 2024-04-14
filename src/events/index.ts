@@ -1,5 +1,7 @@
 import * as keyboard from "./keyboard"
+import * as io from "./io"
 
 export {
-    keyboard
+    keyboard,
+    io
 }

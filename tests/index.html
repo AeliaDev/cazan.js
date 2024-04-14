@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cazanjs tests</title>
-    <link rel="stylesheet" href="/style.css">
     <script src="/app.js" type="module"></script>
+    <style>
+        html, body {
+            width:  100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Center #game canvas */
+        #game {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            border : 1px solid black;
+            z-index: 100;
+        }
+    </style>
+    <!-- remove comments here to custom cazan popup style -->
+    <!--<style id="cazan-popup-style">
+        #cazan-popup{
+            background: #000;
+            color: #fff;
+        }
+    </style>-->
 </head>
 <body>
     <canvas id="game"></canvas>

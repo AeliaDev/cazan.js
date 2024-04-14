@@ -3,7 +3,7 @@ import {Dimensions, Position} from "../types/shapes";
 import {NativeImage} from "./native-image";
 
 export class Image {
-    img = new NativeImage();
+    img = new NativeImage()
 
     /**
      * @param {Game} game
@@ -19,9 +19,9 @@ export class Image {
         protected dimensions: Dimensions,
         protected toDisplay?: boolean
     ) {
-        this.img.src = src;
+        this.img.src = src
         this.img.onload = () => {
-            typeof toDisplay === "undefined" || toDisplay ?  this.display() : null
+            typeof toDisplay === "undefined" || toDisplay ? this.display() : null
         }
         this.game.registerShapes(this)
     }
