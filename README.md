@@ -4,7 +4,7 @@
 
 ## Installation 
 
-Nota: Another system for installing is in conception.
+Note: Another system for installing is in conception.
 
 1) Clone project
 ``git clone https://github.com/AeliaDev/cazan.js.git``
@@ -45,6 +45,6 @@ function runApp() {
     game.update()
 }
 ```
-There is a little demonstration of what's possible to do actually in `./tests/app.js`!
+There is a little demonstration of what's possible to do for the moment in `./tests/app.js`!
 
 More details in `./tests`.
