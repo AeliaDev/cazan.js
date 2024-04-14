@@ -13,7 +13,7 @@ async function runApp() {
 
     console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
 
-    // use cazan's build-in popups...
+    // use cazan's build-in popups API...
     await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
     console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
     console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
