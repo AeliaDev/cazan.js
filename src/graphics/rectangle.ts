@@ -1,6 +1,7 @@
 import {Graphic} from "./graphic"
-import {Game} from "../game";
+import {Game} from "../game"
 import {Dimensions, ImageHandlingInterface, Position, NativeImage} from "../types/graphics"
+import {CwExport} from "../types/global"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: HTMLImageElement
@@ -56,5 +57,17 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
 
     getImageSource() {
         return this.image ? this.image.src : null
+    }
+
+    /**
+     * This is an internal function made for cazanw plugin.
+     */
+    _exportToCw(): CwExport {
+        return [
+            this.position,
+            {x: this.position.x + this.dimensions.x, y: this.position.y},
+            {x: this.position.x, y: this.position.y + this.dimensions.y},
+            {x: this.position.x + this.dimensions.x, y: this.position.y + this.dimensions.y},
+        ]
     }
 }

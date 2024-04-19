@@ -14,12 +14,12 @@ async function runApp() {
     console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
 
     // use cazan's build-in popups...
-    await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
-    console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
-    console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
+    //await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
+    //console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
+    //console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
 
     // ... or create one from your own
-    const popup = new cazan.utils.Popup({
+    /*const popup = new cazan.utils.Popup({
         title: "Popup",
         msg: "Hi",
         btnText: 'Start',
@@ -29,7 +29,7 @@ async function runApp() {
         type: "prompt"
     })
     console.log(await popup.getResponse())
-    popup.removePopup()
+    popup.removePopup()*/
 
     let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
     let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})

@@ -1,6 +1,7 @@
 import {Graphic} from "./graphic"
 import {ImageHandlingInterface, NativeImage, Position} from "../types/graphics"
-import {Game} from "../game";
+import {Game} from "../game"
+import {CwExport} from "../types/global"
 
 export class Circle extends Graphic implements ImageHandlingInterface {
     private image?: HTMLImageElement
@@ -99,5 +100,12 @@ export class Circle extends Graphic implements ImageHandlingInterface {
 
     getImageSource() {
         return this.image ? this.image.src : null
+    }
+
+    /**
+     * This is an internal function made for cazanw plugin.
+     */
+    _exportToCw(): CwExport {
+        return {center: this.position, radius: this.radius}
     }
 }

@@ -2,9 +2,9 @@ import {terser} from "rollup-plugin-terser"
 import typescript from '@rollup/plugin-typescript'
 
 const license = "/**!\n" +
-                        " * Cazan  v0.1.0 (https://github.com/AeliaDev/cazan)\n" +
-                        " * Copyright 2023 The Cazan Authors\n" +
-                        " * Licensed under MIT (https://github.com/AeliaDev/cazan/blob/main/LICENSE)\n" +
+                        " * Cazan  v0.1.0 (https://github.com/AeliaDev/cazan.js)\n" +
+                        " * Copyright 2023 AeliaDev & cazan contributors\n" +
+                        " * Licensed under MIT (https://github.com/AeliaDev/cazan.js/blob/main/LICENSE)\n" +
                         " */"
 
 export default {

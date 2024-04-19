@@ -1,5 +1,6 @@
 import {Game} from "../game"
 import {Dimensions, Position} from "../types/graphics"
+import {CwExport} from "../types/global"
 
 export class Graphic {
     readonly id!: number
@@ -60,5 +61,12 @@ export class Graphic {
 
     getDisplayState() {
         return this.toDisplay
+    }
+
+    /**
+     * This is an internal function made for cazanw plugin.
+     */
+    _exportToCw(): CwExport {
+        return {}
     }
 }
