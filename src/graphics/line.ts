@@ -17,7 +17,6 @@ export class Line extends Graphic {
         let dimensions: Dimensions = {
             x: (secondPoint.x - firstPoint.x),
             y: (secondPoint.y - firstPoint.y),
-            z: null
         }
 
         super(game, firstPoint, dimensions, toDisplay)

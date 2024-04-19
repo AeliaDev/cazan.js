@@ -1,22 +1,35 @@
 import {Graphic} from "./graphic"
-import {ImageHandlingInterface, NativeImage, Position} from "../types/graphics"
+import {
+    CurveDrawingOptionsInterface,
+    CurveInterface,
+    ImageHandlingInterface,
+    NativeImage,
+    Position
+} from "../types/graphics"
 import {Game} from "../game"
 import {CwExport} from "../types/global"
 
-export class Circle extends Graphic implements ImageHandlingInterface {
+export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: HTMLImageElement
-    private radius: number
+    private drawingOptions: CurveDrawingOptionsInterface = {
+        startAngle: 0,
+        endAngle: Math.PI * 2,
+        counterClockWise: true
+    }
 
     constructor(
         game: Game,
         position: Position,
-        radius: number,
+        private radius: number,
         srcImage?: string,
-        toDisplay?: boolean
+        toDisplay?: boolean,
+        drawingOptions?: CurveDrawingOptionsInterface
     ) {
         super(game, position, {x: radius, y: 0, z: 0}, toDisplay)
 
-        this.radius = radius
+        if(drawingOptions) {
+            this.setDrawingOptions(drawingOptions)
+        }
 
         if(srcImage) {
             this.image = new NativeImage()
@@ -39,9 +52,9 @@ export class Circle extends Graphic implements ImageHandlingInterface {
                 this.position.x,
                 this.position.y,
                 this.radius,
-                0,
-                Math.PI * 2,
-                true
+                this.drawingOptions.startAngle,
+                this.drawingOptions.endAngle,
+                this.drawingOptions.counterClockWise
             )
             this.game.getCtx().closePath()
             this.game.getCtx().clip()
@@ -59,9 +72,9 @@ export class Circle extends Graphic implements ImageHandlingInterface {
                 this.position.x,
                 this.position.y,
                 this.radius,
-                0,
-                Math.PI * 2,
-                true
+                this.drawingOptions.startAngle,
+                this.drawingOptions.endAngle,
+                this.drawingOptions.counterClockWise
             )
             this.game.getCtx().clip()
             this.game.getCtx().closePath()
@@ -76,8 +89,8 @@ export class Circle extends Graphic implements ImageHandlingInterface {
             this.position.x,
             this.position.y,
             this.radius,
-            0,
-            2 * Math.PI
+            this.drawingOptions.startAngle,
+            this.drawingOptions.endAngle
         )
         this.game.getCtx().stroke()
     }
@@ -88,6 +101,16 @@ export class Circle extends Graphic implements ImageHandlingInterface {
 
     getRadius() {
         return this.radius
+    }
+
+    setDrawingOptions(options: CurveDrawingOptionsInterface) {
+        this.drawingOptions = options
+
+        if(!this.drawingOptions.counterClockWise) this.drawingOptions.counterClockWise = true
+    }
+
+    getDrawingOptions() {
+        return this.drawingOptions
     }
 
     setImage(image: HTMLImageElement) {
