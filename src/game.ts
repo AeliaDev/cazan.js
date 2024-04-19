@@ -1,6 +1,5 @@
-import {CRenderingContext} from "./types/global";
-import {Shape} from "./shapes";
-import {Image} from "./assets";
+import {CRenderingContext} from "./types/global"
+import {Graphic} from "./graphics"
 
 /**
  * This class is used to manage game's configuration and to pass ctx to functions.
@@ -9,7 +8,7 @@ import {Image} from "./assets";
  * @param {HTMLCanvasElement} canvas
  */
 export class Game {
-    private shapes: (Shape | Image)[] = []
+    private graphics: Graphic[] = []
     private fps: number
     private fpsIncrement: number = 0
 
@@ -86,8 +85,8 @@ export class Game {
 
     draw(): void {
         this.clearCanvas()
-        this.shapes.forEach(shape => {
-            shape.display()
+        this.graphics.forEach(graphic => {
+            graphic.draw()
         })
     }
 
@@ -95,19 +94,30 @@ export class Game {
      * Register shapes in the shapes list for frame updating
      * Nota: if a frame isn't registered, it won't be actualized on the next frame updating.
      *
-     * @param shapes
+     * @param graphics
      */
-    registerShapes(shapes: Shape | Image | (Shape | Image)[]): void {
-        if(Array.isArray(shapes)) {
-            this.shapes.concat(shapes)
+    registerShapes(graphics: Graphic | (Graphic)[]): void {
+        if(Array.isArray(graphics)) {
+            this.graphics.concat(graphics)
             return
         }
-        this.shapes.push(shapes)
+        this.graphics.push(graphics)
     }
 
     /**
-     * to do : implement unregisterShape()
+     * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `shape.hide()`.
+     * @param graphicId
      */
+    unregisterShape(graphicId: number): void {
+        this.graphics.splice(graphicId-1, 1)  // delete the element in the list
+    }
+
+    /**
+     * Returns the shapes registered in Game.
+     */
+    getShapes(): Graphic[] {
+        return this.graphics
+    }
 
     setFps(newFps: number) {
         this.fps = newFps

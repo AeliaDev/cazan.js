@@ -103,7 +103,7 @@ export class Popup {
                     'click',
                     () => {
                         let input: HTMLInputElement | null = document.querySelector("#cazan-popup-input")
-                        if(input && input.value !== "") {
+                        if(input) {
                             resolve(input.value)
                         }
                     }

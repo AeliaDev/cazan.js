@@ -1,7 +1,5 @@
-import {Image} from "./image";
-import {Audio} from "./audio";
+import {Audio} from "./audio"
 
 export {
-    Image,
-    Audio
+    Audio,
 }

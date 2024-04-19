@@ -31,9 +31,9 @@ async function runApp() {
     console.log(await popup.getResponse())
     popup.removePopup()
 
-    let testRect = new cazan.shapes.Shape(game, {x: 10, y: 10}, {x: 50, y: 50})
-    let testLine = new cazan.shapes.LineShape(game, {x: 10, y: 10}, {x: 50, y: 150})
-    let image = new cazan.assets.Image(game, "img.png", {x: 120, y: 10}, {x: 200, y: 200}, false)
+    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
+    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})
+    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
 
     cazan.events.keyboard.setShortcutHandler({
         on: 'keydown',
@@ -54,8 +54,7 @@ async function runApp() {
         shortcutCallback: (event) => event.key === 'ArrowLeft',
         callback: () => {
             testRect.setPosition({
-                x: testRect.getPosition().x - 10,
-                y: testRect.getPosition().y
+                x: testRect.getPosition().x - 10
             })
         }
     })
@@ -66,24 +65,22 @@ async function runApp() {
         callback: () => {
             testRect.setPosition({
                 x: testRect.getPosition().x + 10,
-                y: testRect.getPosition().y
             })
             testLine.setPosition({
                 x: testLine.getPosition().x + 10,
-                y: testLine.getPosition().y
             })
         }
     })
 
     // Pause for 3 seconds every 5 seconds
-    /*setInterval(() => {
-        audio.play()
-        setTimeout(() => {
+    setInterval(() => {
+        //audio.play()
+        /*setTimeout(() => {
             audio.pause()
-            image.display()
-        }, 3000)
-    }, 5000);*/
-    audio.play()
+        }, 3000)*/
+        image.toggleDisplay()
+    }, 5000);
+    //audio.play()
 
     game.update()
 }
