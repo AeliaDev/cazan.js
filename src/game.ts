@@ -8,7 +8,7 @@ import {Graphic} from "./graphics"
  * @param {HTMLCanvasElement} canvas
  */
 export class Game {
-    private graphics: Graphic[] = []
+    private graphics: (Graphic | null)[] = []
     private fps: number
     private fpsIncrement: number = 0
 
@@ -86,7 +86,7 @@ export class Game {
     draw(): void {
         this.clearCanvas()
         this.graphics.forEach(graphic => {
-            graphic.draw()
+            if(graphic) graphic.draw()
         })
     }
 
@@ -109,13 +109,13 @@ export class Game {
      * @param graphicId
      */
     unregisterShape(graphicId: number): void {
-        this.graphics.splice(graphicId-1, 1)  // delete the element in the list
+        this.graphics[graphicId] = null
     }
 
     /**
      * Returns the shapes registered in Game.
      */
-    getShapes(): Graphic[] {
+    getShapes() {
         return this.graphics
     }
 

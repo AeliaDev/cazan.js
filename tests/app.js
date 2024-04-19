@@ -34,6 +34,8 @@ async function runApp() {
     let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
     let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})
     let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
+    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25)
+    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, "img.png")
 
     cazan.events.keyboard.setShortcutHandler({
         on: 'keydown',
@@ -79,6 +81,7 @@ async function runApp() {
             audio.pause()
         }, 3000)*/
         image.toggleDisplay()
+        game.unregisterShape(testLine.id)
     }, 5000);
     //audio.play()
 
