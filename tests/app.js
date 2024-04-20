@@ -5,7 +5,6 @@ async function runApp() {
     let game = cazan.setup("#game", "2d")
     let audio = new cazan.assets.Audio(["audio.mp3"])
 
-
     game.setSize(600, 350)
     game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
 
@@ -36,6 +35,13 @@ async function runApp() {
     let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
     let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25)
     let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, "img.png")
+
+    // video demonstration
+    let testRect2 = new cazan.graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
+    let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
+
+    video.play()
+    video.setLoop(true)
 
     cazan.events.keyboard.setShortcutHandler({
         on: 'keydown',
@@ -83,7 +89,7 @@ async function runApp() {
         image.toggleDisplay()
         game.unregisterShape(testLine.id)
     }, 5000);
-    //audio.play()
+    audio.play()
 
     game.update()
 }

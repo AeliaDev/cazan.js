@@ -11,8 +11,8 @@ export interface Dimensions {
 }
 
 export interface ImageHandlingInterface {
-    setImage(image: HTMLImageElement): void
-    getImage(): HTMLImageElement | null
+    setImage(image: CanvasImageSource): void
+    getImage(): CanvasImageSource | null
     getImageSource(): string | null
 }
 

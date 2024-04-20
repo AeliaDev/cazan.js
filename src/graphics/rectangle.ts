@@ -4,7 +4,7 @@ import {Dimensions, ImageHandlingInterface, Position, NativeImage} from "../type
 import {CwExport} from "../types/global"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
-    private image?: HTMLImageElement
+    private image?: CanvasImageSource
 
     constructor(
         game: Game,
@@ -47,7 +47,7 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         )
     }
 
-    setImage(image: HTMLImageElement) {
+    setImage(image: CanvasImageSource) {
         this.image = image
     }
 
@@ -56,7 +56,7 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
     }
 
     getImageSource() {
-        return this.image ? this.image.src : null
+        return (this.image && 'src' in this.image) ? this.image.src : null
     }
 
     /**
