@@ -1,7 +1,9 @@
-import {Image} from "./image";
-import {Audio} from "./audio";
+import {Audio} from "./audio"
+import {Multimedia} from "./multimedia"
+import {Video} from "./video"
 
 export {
-    Image,
-    Audio
+    Audio,
+    Multimedia,
+    Video,
 }
