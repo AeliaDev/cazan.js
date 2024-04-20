@@ -60,6 +60,15 @@ func mp3Handler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(string(content)))
 }
 
+func mp4Handler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "video/mp4")
+    content, err := os.ReadFile("video.mp4")
+    if err != nil {
+        log.Fatal(err)
+    }
+    w.Write([]byte(string(content)))
+}
+
 func main() {
     http.HandleFunc("/", indexHandler)
     http.HandleFunc("/app.js", jsHandler)
@@ -67,6 +76,7 @@ func main() {
     http.HandleFunc("/cazan.min.js", cazanMinJsHandler)
     http.HandleFunc("/img.png", pngHandler)
     http.HandleFunc("/audio.mp3", mp3Handler)
+    http.HandleFunc("/video.mp4", mp4Handler)
     fmt.Println("Server started at http://localhost:8080/")
     http.ListenAndServe(":8080", nil)
 }

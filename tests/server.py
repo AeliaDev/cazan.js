@@ -24,6 +24,9 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/audio.mp3':
                 filename = 'audio.mp3'
                 content_type = 'audio/mpeg'
+            elif self.path == '/video.mp4':
+                filename = 'video.mp4'
+                content_type = 'video/mp4'
             else:
                 self.send_response(404)
                 self.end_headers()
