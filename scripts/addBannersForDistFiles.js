@@ -25,6 +25,7 @@ function addBannerForDistFile(file, text) {
 }
 
 
-addBannerForDistFile(path.join(__dirname, '../dist/cazan.js'), banner)
-addBannerForDistFile(path.join(__dirname, '../dist/cazan.min.js'), banner)
-addBannerForDistFile(path.join(__dirname, '../dist/cazan.d.ts'), bannerDts)
+console.log("Adding banners for dist files...")
+addBannerForDistFile(path.join(__dirname, '../dist/lib/cazan.js'), banner)
+addBannerForDistFile(path.join(__dirname, '../dist/lib/cazan.min.js'), banner)
+addBannerForDistFile(path.join(__dirname, '../dist/lib/cazan.d.ts'), bannerDts)

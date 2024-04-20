@@ -5,10 +5,10 @@ export default {
     input: 'src/index.ts',
     output: [
         {
-            file: 'dist/cazan.js',
+            file: 'dist/lib/cazan.js',
             format: 'es',
         },{
-        file: 'dist/cazan.min.js',
+        file: 'dist/lib/cazan.min.js',
             format: 'es',
             name: 'cazan',
             plugins: [terser()]

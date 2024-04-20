@@ -14,8 +14,10 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "build": "rollup -c && node scripts/deleteDtsFiles.js",
-    "bundle-dts": "dts-bundle-generator dist/index.d.ts --out-file dist/cazan.d.ts --no-banner && node scripts/deleteDtsFiles.js && node scripts/addBannersForDistFiles.js",
+    "build": "rollup -c && yarn run clear-dts-files",
+    "clear-dts-files": "node scripts/deleteDtsFiles.js",
+    "add-banners": "node scripts/addBannersForDistFiles.js",
+    "bundle-dts": "dts-bundle-generator dist/lib/index.d.ts --out-file dist/lib/cazan.d.ts --no-banner && yarn run clear-dts-files && yarn run add-banners",
     "release": "rollup -c && yarn run bundle-dts"
   },
   "dependencies": {

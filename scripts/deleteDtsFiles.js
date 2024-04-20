@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const directoryPath = path.join(__dirname, '../dist')
+const directoryPath = path.join(__dirname, '../dist/lib')
 
 function deleteDtsFiles(dirPath) {
     fs.readdir(dirPath, (err, files) => {
@@ -30,5 +30,5 @@ function deleteDtsFiles(dirPath) {
     })
 }
 
-console.log("Clearing .d.ts files in dist...")
+console.log("Clearing .d.ts files in dist/lib...")
 deleteDtsFiles(directoryPath)
