@@ -13,7 +13,7 @@ export declare interface SetKeyboardShortcutInterface {
      * (event) => (event.ctrlKey || event.metaKey) && event.key === 's'
      * ```
      *
-     * @param {Event} event
+     * @param {KeyboardEvent} event
      * @returns {boolean}
      */
     shortcutCallback: (event: KeyboardEvent) => boolean
