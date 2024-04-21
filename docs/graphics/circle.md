@@ -51,4 +51,3 @@ interface CircleConstructorInterface {
     drawingOptions?: CurveDrawingOptionsInterface
 }
 ````
-

@@ -36,7 +36,6 @@ class Ellipse extends Graphic implements CurveInterface {
 
     constructor(options: EllipseConstructorInterface) {}
 
-
     setRadius(options: {x?: number, y?: number}): void {}
 
     getRadius(): {x: number, y: number} {}
@@ -56,4 +55,3 @@ interface EllipseConstructorInterface {
     drawingOptions?: CurveDrawingOptionsInterface
 }
 ````
-
