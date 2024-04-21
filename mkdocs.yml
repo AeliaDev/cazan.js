@@ -12,16 +12,21 @@ nav:
   - get-started.md
   - Graphics:
       - graphics/index.md
-      - graphics/shapes.md
-      - graphics/images.md
+      - graphics/rectangle.md
+      - graphics/line.md
+      - graphics/circle.md
+      - graphics/ellipse.md
       - graphics/styling.md
   - Events:
       - events/index.md
       - events/keyboard.md
       - events/popups.md
+  - Multimedia:
+      - multimedia/index.md
+      - multimedia/audio.md
+      - multimedia/video.md
   - Utils:
       - utils/index.md
-      - utils/audios.md
   - Community:
       - community/index.md
       - community/licence.md

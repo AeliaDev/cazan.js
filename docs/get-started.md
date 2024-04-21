@@ -45,13 +45,11 @@ function runApp() {
     let game = cazan.setup("#yourCanvasId", "2d")
     game.setSize(600, 350)
     
-    let rectangle = new cazan.shapes.Shape(game, {x: 10, y: 10}, {x: 50, y: 50}) //(1)!
+    let rectangle = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
 
     game.update()
 }
 ````
-
-1. !!!warning "The shape API will maybe be updated with major changes."
 
 ## Sum up!
 

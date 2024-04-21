@@ -1,6 +1,6 @@
 # cazan popups
 
-Cazan provides a system of popups for simplify I/O interactions with the user.
+Cazan provides a system of popups to simplify I/O interactions with the user.
 
 ## Using the events.io API
 
