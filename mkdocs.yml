@@ -1,0 +1,69 @@
+site_name: cazan.js docs
+repo_url: https://github.com/AeliaDev/cazan.js
+repo_name: AeliaDev/cazan.js
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; AeliaDev & cazan contributors
+
+plugins:
+  - search
+
+nav:
+  - index.md
+  - get-started.md
+  - Graphics:
+      - graphics/index.md
+      - graphics/rectangle.md
+      - graphics/line.md
+      - graphics/circle.md
+      - graphics/ellipse.md
+      - graphics/styling.md
+  - Events:
+      - events/index.md
+      - events/keyboard.md
+      - events/popups.md
+  - Multimedia:
+      - multimedia/index.md
+      - multimedia/audio.md
+      - multimedia/video.md
+  - Utils:
+      - utils/index.md
+  - Community:
+      - community/index.md
+      - community/licence.md
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.view
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+    view: material/eye
+    edit: material/pencil
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AeliaDev
+      name: AeliaDev
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

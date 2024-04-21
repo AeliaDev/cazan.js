@@ -10,7 +10,7 @@
     ],
     "esModuleInterop": false,
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./dist/lib",
     "strict": true
   },
   "include": ["src"],

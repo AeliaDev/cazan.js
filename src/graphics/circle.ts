@@ -10,7 +10,7 @@ import {Game} from "../game"
 import {CwExport} from "../types/global"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
-    private image?: HTMLImageElement
+    private image?: CanvasImageSource
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
@@ -122,7 +122,7 @@ export class Circle extends Graphic implements CurveInterface, ImageHandlingInte
     }
 
     getImageSource() {
-        return this.image ? this.image.src : null
+        return (this.image && 'src' in this.image) ? this.image.src : null
     }
 
     /**
