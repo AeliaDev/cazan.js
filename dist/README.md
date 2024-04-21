@@ -1,20 +1,20 @@
 # cazan
- 
+
 *A JS lib that helps you to build games in webpages.*
 
-## Installation 
+## Installation
 
 Note: Another system for installing is in conception.
 
 1) Clone project
-``git clone https://github.com/AeliaDev/cazan.js.git``
+   ``git clone https://github.com/AeliaDev/cazan.js.git``
 2) Install dependencies
-``yarn``
+   ``yarn``
 3) Build assets
-``yarn run build``
+   ``yarn run build``
 4) Launch tests server
-   - With Go ``cd tests && go run server.go``
-   - With Python ``cd tests && python server.py``
+    - With Go ``cd tests && go run server.go``
+    - With Python ``cd tests && python server.py``
 
 ## Use
 

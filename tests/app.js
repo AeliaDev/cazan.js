@@ -5,7 +5,6 @@ async function runApp() {
     let game = cazan.setup("#game", "2d")
     let audio = new cazan.assets.Audio(["audio.mp3"])
 
-
     game.setSize(600, 350)
     game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
 
@@ -14,12 +13,12 @@ async function runApp() {
     console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
 
     // use cazan's build-in popups API...
-    await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
-    console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
-    console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
-
+    //await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
+    //console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
+    //console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
+  
     // ... or create one from your own
-    const popup = new cazan.utils.Popup({
+    /*const popup = new cazan.utils.Popup({
         title: "Popup",
         msg: "Hi",
         btnText: 'Start',
@@ -29,11 +28,20 @@ async function runApp() {
         type: "prompt"
     })
     console.log(await popup.getResponse())
-    popup.removePopup()
+    popup.removePopup()*/
 
-    let testRect = new cazan.shapes.Shape(game, {x: 10, y: 10}, {x: 50, y: 50})
-    let testLine = new cazan.shapes.LineShape(game, {x: 10, y: 10}, {x: 50, y: 150})
-    let image = new cazan.assets.Image(game, "img.png", {x: 120, y: 10}, {x: 200, y: 200}, false)
+    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
+    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})
+    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
+    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25)
+    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, "img.png")
+
+    // video demonstration
+    let testRect2 = new cazan.graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
+    let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
+
+    video.play()
+    video.setLoop(true)
 
     cazan.events.keyboard.setShortcutHandler({
         on: 'keydown',
@@ -54,8 +62,7 @@ async function runApp() {
         shortcutCallback: (event) => event.key === 'ArrowLeft',
         callback: () => {
             testRect.setPosition({
-                x: testRect.getPosition().x - 10,
-                y: testRect.getPosition().y
+                x: testRect.getPosition().x - 10
             })
         }
     })
@@ -66,23 +73,22 @@ async function runApp() {
         callback: () => {
             testRect.setPosition({
                 x: testRect.getPosition().x + 10,
-                y: testRect.getPosition().y
             })
             testLine.setPosition({
                 x: testLine.getPosition().x + 10,
-                y: testLine.getPosition().y
             })
         }
     })
 
     // Pause for 3 seconds every 5 seconds
-    /*setInterval(() => {
-        audio.play()
-        setTimeout(() => {
+    setInterval(() => {
+        //audio.play()
+        /*setTimeout(() => {
             audio.pause()
-            image.display()
-        }, 3000)
-    }, 5000);*/
+        }, 3000)*/
+        image.toggleDisplay()
+        game.unregisterShape(testLine.id)
+    }, 5000);
     audio.play()
 
     game.update()
