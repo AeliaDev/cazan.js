@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 # Cazan documentation
 
 Cazan's duty is to help you to build your games in browsers, using ``<canvas>``.
