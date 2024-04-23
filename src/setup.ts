@@ -1,7 +1,7 @@
-import {ContextNotFoundException} from "./exceptions/index";
-import {CRenderingContext} from "./types/global";
-import {Game} from "./game";
-import {setShortcutHandler} from "./events/keyboard";
+import {ContextNotFoundException} from "./exceptions/index"
+import {CRenderingContext} from "./types/global"
+import {Game} from "./game"
+import {setShortcutHandler} from "./events/keyboard"
 
 /**
  * Setup cazan

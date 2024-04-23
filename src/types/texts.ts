@@ -1,4 +1,3 @@
-import {CRenderingContext} from "./global";
 
 export declare interface TextInterface {
     text: string

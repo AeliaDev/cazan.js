@@ -1,6 +1,6 @@
-import {Game} from "../game"
+import {CwExport} from "../types/cw"
 import {Dimensions, Position} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {Game} from "../game"
 
 export class Graphic {
     readonly id!: number
@@ -11,11 +11,15 @@ export class Graphic {
         protected dimensions: Dimensions,
         protected toDisplay = true
     ) {
-        this.id = this.game.getShapes().length
-        this.game.registerShapes(this)
+        this.id = this.game.getGraphics().length
+        this.game.registerGraphic(this)
     }
 
     draw(): void {}
+
+    destroy() {
+        this.game.unregisterGraphic(this.id)
+    }
 
     hide(): void {
         this.toDisplay = false

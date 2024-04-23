@@ -1,5 +1,5 @@
-import {Popup} from "../utils"
 import {IOEventInterface, PopupInterface} from "../types/events"
+import {Popup} from "../utils"
 
 async function ioEventBase(options: PopupInterface) {
     const popup = new Popup({...options})

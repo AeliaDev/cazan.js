@@ -18,7 +18,11 @@ export class Game {
      * @param canvas
      * @param fps Frames per second
      */
-    constructor(protected ctx: CRenderingContext, protected canvas: HTMLCanvasElement, fps: number = 100) {
+    constructor(
+        protected ctx: CRenderingContext,
+        protected canvas: HTMLCanvasElement,
+        fps: number = 100
+    ) {
         this.fps = fps
     }
 
@@ -96,7 +100,7 @@ export class Game {
      *
      * @param graphics
      */
-    registerShapes(graphics: Graphic | (Graphic)[]): void {
+    registerGraphic(graphics: Graphic | (Graphic)[]): void {
         if(Array.isArray(graphics)) {
             this.graphics.concat(graphics)
             return
@@ -108,14 +112,14 @@ export class Game {
      * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `shape.hide()`.
      * @param graphicId
      */
-    unregisterShape(graphicId: number): void {
+    unregisterGraphic(graphicId: number): void {
         this.graphics[graphicId] = null
     }
 
     /**
      * Returns the shapes registered in Game.
      */
-    getShapes() {
+    getGraphics() {
         return this.graphics
     }
 

@@ -1,4 +1,4 @@
-import {ExceptionInterface, ExceptionOptionsInterface} from "./exception-interface";
+import {ExceptionInterface, ExceptionOptionsInterface} from "./exception-interface"
 
 export class InvalidArgumentException implements ExceptionInterface {
     constructor(options: ExceptionOptionsInterface) {

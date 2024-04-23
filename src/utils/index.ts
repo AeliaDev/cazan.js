@@ -1,5 +1,5 @@
-import * as validations from "./validations"
 import {Popup} from "./popups"
+import * as validations from "./validations"
 
 export {
     Popup,

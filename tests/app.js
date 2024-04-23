@@ -87,7 +87,7 @@ async function runApp() {
             audio.pause()
         }, 3000)*/
         image.toggleDisplay()
-        game.unregisterShape(testLine.id)
+        game.unregisterGraphic(testLine.id)
     }, 5000);
     audio.play()
 

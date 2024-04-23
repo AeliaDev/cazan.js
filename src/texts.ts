@@ -1,5 +1,5 @@
-import {Game} from "./game";
-import {TextInterface} from "./types/texts";
+import {Game} from "./game"
+import {TextInterface} from "./types/texts"
 
 /**
  * Display text

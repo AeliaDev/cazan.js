@@ -1,7 +1,8 @@
-import {Graphic} from "./graphic"
+import {CwExport} from "../types/cw"
+import {Dimensions, ImageHandlingInterface, Position} from "../types/graphics"
 import {Game} from "../game"
-import {Dimensions, ImageHandlingInterface, Position, NativeImage} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {Graphic} from "./graphic"
+import {NativeImage} from "../assets/native-image"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: CanvasImageSource
@@ -17,8 +18,6 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         if(srcImage) {
             this.image = new NativeImage()
             this.image.src = srcImage
-
-            // is this necessary?
             this.image.onload = () => {
                 typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
             }

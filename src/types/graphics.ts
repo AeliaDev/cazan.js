@@ -31,5 +31,3 @@ export interface CurveDrawingOptionsInterface {
     /** for Ellipse only */
     rotation?: number
 }
-
-export const NativeImage = Image

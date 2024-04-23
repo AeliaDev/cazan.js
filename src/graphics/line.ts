@@ -1,7 +1,7 @@
-import {Graphic} from "./graphic"
-import {Game} from "../game";
+import {CwExport} from "../types/cw"
 import {Dimensions, Position} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {Game} from "../game"
+import {Graphic} from "./graphic"
 
 export class Line extends Graphic {
 

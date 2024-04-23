@@ -1,7 +1,7 @@
-import {Game} from "./game";
-import {InvalidArgumentException} from "./exceptions";
-import {LineStyleInterface, TextStyleInterface} from "./types/styles";
-import {validateRgbaString} from "./utils/validations";
+import {Game} from "./game"
+import {InvalidArgumentException} from "./exceptions"
+import {LineStyleInterface, TextStyleInterface} from "./types/styles"
+import {validateRgbaString} from "./utils/validations"
 
 /**
  * Set fill for drawing shapes.

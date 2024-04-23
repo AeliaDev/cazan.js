@@ -1,7 +1,7 @@
-import {Graphic} from "./graphic"
-import {Game} from "../game"
 import {CurveDrawingOptionsInterface, CurveInterface, Position} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {CwExport} from "../types/cw"
+import {Game} from "../game"
+import {Graphic} from "./graphic"
 
 export class Ellipse extends Graphic implements CurveInterface {
     private drawingOptions: CurveDrawingOptionsInterface = {

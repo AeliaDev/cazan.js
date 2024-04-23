@@ -1,13 +1,13 @@
-import {Graphic} from "./graphic"
 import {
     CurveDrawingOptionsInterface,
     CurveInterface,
     ImageHandlingInterface,
-    NativeImage,
     Position
 } from "../types/graphics"
+import {CwExport} from "../types/cw"
 import {Game} from "../game"
-import {CwExport} from "../types/global"
+import {Graphic} from "./graphic"
+import {NativeImage} from "../assets/native-image"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: CanvasImageSource
@@ -34,8 +34,6 @@ export class Circle extends Graphic implements CurveInterface, ImageHandlingInte
         if(srcImage) {
             this.image = new NativeImage()
             this.image.src = srcImage
-
-            // is this necessary?
             this.image.onload = () => {
                 typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
             }
