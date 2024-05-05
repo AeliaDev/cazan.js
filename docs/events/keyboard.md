@@ -7,7 +7,7 @@ In this page we'll use the ``cazan.events.keyboard`` namespace.
 !!!example
     There's a little example:
     ````js
-    keyboard.setShortcutHandler({
+    keyboard.setKeyboardHandler({
         on: 'keydown', //(1)!
         shortcutCallback: (event) => event.key === 'ArrowLeft', //(2)!
         callback: () => { //(3)!
@@ -31,13 +31,13 @@ In this page we'll use the ``cazan.events.keyboard`` namespace.
 
 ## Reference
 
-``SetKeyboardShortcutInterface`` is used for typing ``keyboard.setShortcutHandler()`` params.
+``SetKeyboardHandlerInterface`` is used for typing ``keyboard.setKeyboardHandler()`` params.
 
 ````ts
-interface SetKeyboardShortcutInterface {
+interface SetKeyboardHandlerInterface {
     on: string & ('keyup' | 'keydown')
     /**
-     * Define the key combination of the shortcut here.
+     * Define the key combination of the event here.
      * More information on how to set custom keyboard shortcuts : https://stackoverflow.com/a/60279187/21402860
      *
      * ------------------------------------------------------------------------------------------

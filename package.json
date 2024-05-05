@@ -4,7 +4,8 @@
   "description": "A JS lib that helps you to build games in webpages.",
   "main": "src/index.ts",
   "repository": "https://github.com/AeliaDev/cazan.git",
-  "author": "AeliaDev & cazan contributors",
+  "homepage": "https://github.com/AeliaDev/cazan.js",
+  "author": "AeliaDev & Cazan contributors",
   "license": "MIT",
   "private": false,
   "devDependencies": {

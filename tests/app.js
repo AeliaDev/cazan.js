@@ -43,7 +43,7 @@ async function runApp() {
     video.play()
     video.setLoop(true)
 
-    cazan.events.keyboard.setShortcutHandler({
+    cazan.events.keyboard.setKeyboardHandler({
         on: 'keydown',
         shortcutCallback: (event) => (event.ctrlKey || event.metaKey) && event.key === 's',
         callback: () => {
@@ -57,7 +57,7 @@ async function runApp() {
         }
     })
 
-    cazan.events.keyboard.setShortcutHandler({
+    cazan.events.keyboard.setKeyboardHandler({
         on: 'keydown',
         shortcutCallback: (event) => event.key === 'ArrowLeft',
         callback: () => {
@@ -67,7 +67,7 @@ async function runApp() {
         }
     })
 
-    cazan.events.keyboard.setShortcutHandler({
+    cazan.events.keyboard.setKeyboardHandler({
         on: 'keydown',
         shortcutCallback: (event) => event.key === 'ArrowRight',
         callback: () => {

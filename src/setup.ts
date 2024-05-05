@@ -1,7 +1,7 @@
 import {ContextNotFoundException} from "./exceptions/index"
 import {CRenderingContext} from "./types/global"
 import {Game} from "./game"
-import {setShortcutHandler} from "./events/keyboard"
+import {setKeyboardHandler} from "./events/keyboard"
 
 /**
  * Setup cazan
@@ -14,7 +14,7 @@ import {setShortcutHandler} from "./events/keyboard"
 export function setup(canvasSelector: string, context: string, fps?: number): Game | ContextNotFoundException {
     let canvas: HTMLCanvasElement | null = document.querySelector(canvasSelector)
     if(canvas?.getContext) {
-        setShortcutHandler({
+        setKeyboardHandler({
             on: 'keydown',
             shortcutCallback: (event) => (event.ctrlKey || event.metaKey) && event.key === 'r',
             callback: () => window.location.reload()
