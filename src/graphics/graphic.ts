@@ -1,19 +1,28 @@
 import {CwExport} from "../types/cw"
-import {Dimensions, Position} from "../types/graphics"
+import {Dimensions, GraphicConstructorInterface, Position} from "../types/graphics"
 import {Game} from "../game"
 import {GenericGraphicStylesInterface} from "../types/styles"
 import {setFill, setStroke} from "../styles"
 
 export class Graphic {
     readonly id!: number
+    protected game: Game
+    protected position: Position
+    protected dimensions: Dimensions
+    protected styles?: GenericGraphicStylesInterface
+    protected toDisplay = true
 
-    constructor(
-        protected game: Game,
-        protected position: Position,
-        protected dimensions: Dimensions,
-        protected styles?: GenericGraphicStylesInterface,
-        protected toDisplay = true
-    ) {
+    /**
+     *
+     * @param options GraphicConstructorInterface
+     */
+    constructor(options: GraphicConstructorInterface) {
+        this.game = options.game
+        this.position = options.position
+        this.dimensions = options.dimensions
+        this.styles = options.styles
+        this.toDisplay = options.toDisplay ? options.toDisplay : true
+
         this.id = this.game.getGraphics().length
         this.game.registerGraphic(this)
 

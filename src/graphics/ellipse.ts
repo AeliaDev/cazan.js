@@ -1,4 +1,4 @@
-import {CurveDrawingOptionsInterface, CurveInterface, Position} from "../types/graphics"
+import {CurveDrawingOptionsInterface, CurveInterface, EllipseConstructorInterface, Position} from "../types/graphics"
 import {CwExport} from "../types/cw"
 import {Game} from "../game"
 import {GenericGraphicStylesInterface} from "../types/styles"
@@ -6,6 +6,8 @@ import {Graphic} from "./graphic"
 import {setLineStyle, setStroke} from "../styles"
 
 export class Ellipse extends Graphic implements CurveInterface {
+    private radiusX: number
+    private radiusY: number
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
@@ -13,28 +15,23 @@ export class Ellipse extends Graphic implements CurveInterface {
     }
 
     /**
-     *
-     * @param game
-     * @param position
-     * @param radiusX
-     * @param radiusY
-     * @param styles warning: you can put line styling on this element
-     * @param toDisplay
-     * @param drawingOptions
+     * You can use `options.styles.line` for this shape.
+     * @param options EllipseConstructorInterface
      */
-    constructor(
-        game: Game,
-        position: Position,
-        protected radiusX: number,
-        protected radiusY: number,
-        styles?: GenericGraphicStylesInterface,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {
-        super(game, position, {width: radiusX, height: radiusY}, styles, toDisplay)
+    constructor(options: EllipseConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: {width: options.radiusX, height: options.radiusY},
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
 
-        if(drawingOptions) {
-            this.setDrawingOptions(drawingOptions)
+        this.radiusX = options.radiusX
+        this.radiusY = options.radiusY
+
+        if(options.drawingOptions) {
+            this.setDrawingOptions(options.drawingOptions)
         }
     }
 

@@ -1,18 +1,17 @@
 import {
+    CircleConstructorInterface,
     CurveDrawingOptionsInterface,
     CurveInterface,
-    ImageHandlingInterface,
-    Position
+    ImageHandlingInterface
 } from "../types/graphics"
 import {CwExport} from "../types/cw"
-import {Game} from "../game"
-import {GenericGraphicStylesInterface} from "../types/styles"
 import {Graphic} from "./graphic"
 import {NativeImage} from "../assets/native-image"
 import {setLineStyle, setFill} from "../styles"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: CanvasImageSource
+    private radius!: number
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
@@ -20,35 +19,30 @@ export class Circle extends Graphic implements CurveInterface, ImageHandlingInte
     }
 
     /**
-     *
-     * @param game
-     * @param position
-     * @param radius
-     * @param styles warning: you can put line styling on this element
-     * @param srcImage
-     * @param toDisplay
-     * @param drawingOptions
+     * You can use `options.styles.line` for this shape.
+     * @param options CircleConstructorInterface
      */
-    constructor(
-        game: Game,
-        position: Position,
-        private radius: number,
-        styles?: GenericGraphicStylesInterface,
-        srcImage?: string,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {
-        super(game, position, {width: radius, height: 0}, styles, toDisplay)
+    constructor(options: CircleConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: {width: options.radius, height: 0},
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
 
-        if(drawingOptions) {
-            this.setDrawingOptions(drawingOptions)
+        this.radius = options.radius
+        this.drawingOptions = options.drawingOptions ? options.drawingOptions : this.drawingOptions
+
+        if(options.drawingOptions) {
+            this.setDrawingOptions(options.drawingOptions)
         }
 
-        if(srcImage) {
+        if(options.srcImage) {
             this.image = new NativeImage()
-            this.image.src = srcImage
+            this.image.src = options.srcImage
             this.image.onload = () => {
-                typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
+                typeof this.toDisplay === "undefined" || this.toDisplay ? this.draw() : null
             }
         }
     }

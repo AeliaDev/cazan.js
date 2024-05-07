@@ -1,7 +1,5 @@
 import {CwExport} from "../types/cw"
-import {Dimensions, Position} from "../types/graphics"
-import {Game} from "../game"
-import {GenericGraphicStylesInterface} from "../types/styles"
+import {Dimensions, LineConstructorInterface} from "../types/graphics"
 import {Graphic} from "./graphic"
 import {setLineStyle, setStroke} from "../styles"
 
@@ -9,28 +7,24 @@ export class Line extends Graphic {
 
     /**
      *
-     * @param game
-     * @param firstPoint
-     * @param secondPoint
-     * @param styles warning: you must specify here graphic and line style
-     * @param toDisplay
+     * @param options LineConstructorInterface
      */
-    constructor(
-        game: Game,
-        firstPoint: Position,
-        secondPoint: Position,
-        styles?: GenericGraphicStylesInterface,
-        toDisplay?: boolean
-    ) {
+    constructor(options: LineConstructorInterface) {
         /**
          * Here the dimensions are actually the vector from firstPoint to secondPoint.
          */
         let dimensions: Dimensions = {
-            width: (secondPoint.x - firstPoint.x),
-            height: (secondPoint.y - firstPoint.y),
+            width: (options.secondPoint.x - options.firstPoint.x),
+            height: (options.secondPoint.y - options.firstPoint.y),
         }
 
-        super(game, firstPoint, dimensions, styles, toDisplay)
+        super({
+            game: options.game,
+            position: options.firstPoint,
+            dimensions: dimensions,
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
     }
 
     draw(notMandatory = false) {

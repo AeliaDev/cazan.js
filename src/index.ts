@@ -4,7 +4,6 @@ import * as exceptions from "./exceptions/index"
 import * as graphics from "./graphics/index"
 import {setup} from "./setup"
 import * as styles from "./styles"
-import * as texts from "./texts"
 import * as types from "./types/index"
 import * as utils from "./utils/index"
 
@@ -18,7 +17,6 @@ export {
     graphics,
     setup,
     styles,
-    texts,
     types,
     utils
 }

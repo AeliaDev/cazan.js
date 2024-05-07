@@ -1,6 +1,6 @@
 
 export declare interface SetKeyboardHandlerInterface {
-    on: string & ('keyup' | 'keydown')
+    on?: 'keyup' | 'keydown'
     /**
      * Define the key combination of the event here.
      * More information on how to set custom keyboard shortcuts : https://stackoverflow.com/a/60279187/21402860

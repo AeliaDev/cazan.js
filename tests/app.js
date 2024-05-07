@@ -38,26 +38,56 @@ async function runApp() {
         type: "fill"
     }
 
-    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {width: 50, height: 50}, {
-        graphic: blackStyle
+    let testRect = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 10, y: 10},
+        dimensions: {width: 50, height: 50},
+        styles: {
+            graphic: blackStyle
+        }
     })
 
-    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {width: 50, height: 150}, {
-        graphic: orangeStyle,
-        line: {}
+    let testLine = new cazan.graphics.Line({
+        game: game,
+        firstPoint: {x: 10, y: 10},
+        secondPoint: {x: 50, y: 150},
+        styles: {
+            graphic: orangeStyle,
+            line: {}
+        }
     })
-    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {width: 200, height: 200}, {
-        graphic: orangeStyle
-    }, "img.png")
-    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25, {
-        graphic: blackStyle
+
+    let image = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 120, y: 10},
+        dimensions: {width: 200, height: 200},
+        srcImage: "img.png",
+        styles: {graphic: orangeStyle},
     })
-    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, {
-        graphic: orangeStyle
-    }, "img.png")
+
+    let testCircle = new cazan.graphics.Circle({
+        game: game,
+        position: {x: 540, y: 100},
+        radius: 25,
+        styles: {
+            graphic: blackStyle
+        }
+    })
+
+    let testCircleWithImage = new cazan.graphics.Circle({
+        game: game,
+        position: {x: 540, y: 160},
+        radius: 25,
+        styles: {graphic: orangeStyle},
+        srcImage: "img.png"
+    })
 
     // video demonstration
-    let testRect2 = new cazan.graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
+    let testRect2 = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 10, y: 200},
+        dimensions: {x: 150, y: 100}
+    })
     let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
 
     video.play()
@@ -78,7 +108,6 @@ async function runApp() {
     })
 
     cazan.events.keyboard.setKeyboardHandler({
-        on: 'keydown',
         shortcutCallback: (event) => event.key === 'ArrowLeft',
         callback: () => {
             testRect.setPosition({
@@ -88,7 +117,6 @@ async function runApp() {
     })
 
     cazan.events.keyboard.setKeyboardHandler({
-        on: 'keydown',
         shortcutCallback: (event) => event.key === 'ArrowRight',
         callback: () => {
             testRect.setPosition({
@@ -111,23 +139,23 @@ async function runApp() {
     }, 5000);
     audio.play()
 
-    let testText = new cazan.graphics.Text(game, {x: 400, y: 150}, {width: 100, height: 15},
-        {
+    let testText = new cazan.graphics.Text({
+        game: game,
+        position: {x: 400, y: 150},
+        dimensions: {width: 100, height: 15},
+        text: {
             text: "Hello, World!",
             type: "fill",
             x: 5,
             y: 5
         },
-        {
-            graphic: {
-                color: "rgba(255,255,255,1)",
-                type: "fill"
-            },
+        styles: {
+            graphic: blackStyle,
             text: {
-                color: "#000"
+                color: "#fff"
             }
         }
-    )
+    })
 
     game.update()
 }

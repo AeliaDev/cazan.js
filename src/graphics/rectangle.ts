@@ -1,27 +1,29 @@
 import {CwExport} from "../types/cw"
-import {Dimensions, ImageHandlingInterface, Position} from "../types/graphics"
-import {Game} from "../game"
-import {GenericGraphicStylesInterface} from "../types/styles"
+import {ImageHandlingInterface, RectangleConstructorInterface} from "../types/graphics"
 import {Graphic} from "./graphic"
 import {NativeImage} from "../assets/native-image"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: CanvasImageSource
 
-    constructor(
-        game: Game,
-        position: Position,
-        dimensions: Dimensions,
-        styles?: GenericGraphicStylesInterface,
-        srcImage?: string,
-        toDisplay?: boolean
-    ) {
-        super(game, position, dimensions, styles, toDisplay)
-        if(srcImage) {
+    /**
+     *
+     * @param options RectangleConstructorInterface
+     */
+    constructor(options: RectangleConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: options.dimensions,
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
+
+        if(options.srcImage) {
             this.image = new NativeImage()
-            this.image.src = srcImage
+            this.image.src = options.srcImage
             this.image.onload = () => {
-                typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
+                typeof options.toDisplay === "undefined" || options.toDisplay ? this.draw() : null
             }
         }
     }

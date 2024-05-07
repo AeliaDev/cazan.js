@@ -2,8 +2,8 @@
 export declare interface TextInterface {
     text: string
     type: "fill" | "stroke"
-    x: number
-    y: number
+    x?: number
+    y?: number
     maxWidth?: number
 }
 
