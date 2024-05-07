@@ -1,29 +1,29 @@
-import {Dimensions, Position} from "../types/graphics"
-import {Game} from "../game"
+import {TextConstructorInterface} from "../types/graphics"
 import {Rectangle} from "./rectangle"
 import {setFill, setStroke, setTextStyle} from "../styles"
 import {TextInterface, UpdateTextInterface} from "../types/texts"
-import {GenericGraphicStylesInterface} from "../types/styles"
 
 export class Text extends Rectangle {
+    protected text: TextInterface
+
     /**
      *
-     * @param game
-     * @param position
-     * @param dimensions
-     * @param text warning: the position here are for the positions inside the rectangle.
-     * @param styles warning: you must specify here graphic and text style
-     * @param toDisplay
+     * @param options TextConstructorInterface
      */
-    constructor(
-        game: Game,
-        position: Position,
-        dimensions: Dimensions,
-        protected text: TextInterface,
-        styles?: GenericGraphicStylesInterface,
-        toDisplay?: boolean
-    ) {
-        super(game, position, dimensions, styles, undefined, toDisplay)
+    constructor(options: TextConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: options.dimensions,
+            styles: options.styles,
+            srcImage: undefined,
+            toDisplay: options.toDisplay
+        })
+
+        this.text = options.text
+
+        !this.text.x ? this.text.x = 0 : undefined
+        !this.text.y ? this.text.y = 0 : undefined
     }
 
     draw(notMandatory: boolean = false) {
@@ -49,15 +49,15 @@ export class Text extends Rectangle {
         if(this.text.type === "fill") {
             this.game.getCtx().fillText(
                 this.text.text,
-                this.position.x + this.text.x,
-                this.position.y + this.text.y,
+                this.position.x + this.text.x!,
+                this.position.y + this.text.y!,
                 this.text.maxWidth ? this.text.maxWidth : undefined
             )
         } else if(this.text.type === "stroke") {
             this.game.getCtx().strokeText(
                 this.text.text,
-                this.position.x + this.text.x,
-                this.position.y + this.text.y,
+                this.position.x + this.text.x!,
+                this.position.y + this.text.y!,
                 this.text.maxWidth ? this.text.maxWidth : undefined
             )
         }
