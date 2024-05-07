@@ -8,8 +8,6 @@ async function runApp() {
     game.setSize(600, 350)
     game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
 
-    cazan.styles.setFill(game, "rgba(255,165,0,1)")
-
     console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
 
     // use cazan's build-in popups API...
@@ -30,11 +28,33 @@ async function runApp() {
     console.log(await popup.getResponse())
     popup.removePopup()*/
 
-    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
-    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})
-    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
-    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25)
-    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, "img.png")
+    const orangeStyle = {
+        color: "rgba(255,165,0,1)",
+        type: "fill"
+    }
+
+    const blackStyle = {
+        color: "rgba(0,0,0,1)",
+        type: "fill"
+    }
+
+    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {width: 50, height: 50}, {
+        graphic: blackStyle
+    })
+
+    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {width: 50, height: 150}, {
+        graphic: orangeStyle,
+        line: {}
+    })
+    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {width: 200, height: 200}, {
+        graphic: orangeStyle
+    }, "img.png")
+    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25, {
+        graphic: blackStyle
+    })
+    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, {
+        graphic: orangeStyle
+    }, "img.png")
 
     // video demonstration
     let testRect2 = new cazan.graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
@@ -90,6 +110,24 @@ async function runApp() {
         game.unregisterGraphic(testLine.id)
     }, 5000);
     audio.play()
+
+    let testText = new cazan.graphics.Text(game, {x: 400, y: 150}, {width: 100, height: 15},
+        {
+            text: "Hello, World!",
+            type: "fill",
+            x: 5,
+            y: 5
+        },
+        {
+            graphic: {
+                color: "rgba(255,255,255,1)",
+                type: "fill"
+            },
+            text: {
+                color: "#000"
+            }
+        }
+    )
 
     game.update()
 }

@@ -3,6 +3,7 @@ import {Ellipse} from "./ellipse"
 import {Graphic} from "./graphic"
 import {Line} from "./line"
 import {Rectangle} from "./rectangle"
+import {Text} from "./Text"
 
 export {
     Circle,
@@ -10,4 +11,5 @@ export {
     Graphic,
     Line,
     Rectangle,
+    Text,
 }

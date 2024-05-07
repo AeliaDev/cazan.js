@@ -90,7 +90,10 @@ export class Game {
     draw(): void {
         this.clearCanvas()
         this.graphics.forEach(graphic => {
-            if(graphic) graphic.draw()
+            if(graphic) {
+                graphic.setupStylesForDrawing()
+                graphic.draw(true)
+            }
         })
     }
 

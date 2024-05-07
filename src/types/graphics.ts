@@ -5,9 +5,8 @@ export interface Position {
 }
 
 export interface Dimensions {
-    x: number
-    y: number
-    z?: number
+    width: number
+    height: number
 }
 
 export interface ImageHandlingInterface {

@@ -6,8 +6,10 @@ import {
 } from "../types/graphics"
 import {CwExport} from "../types/cw"
 import {Game} from "../game"
+import {GenericGraphicStylesInterface} from "../types/styles"
 import {Graphic} from "./graphic"
 import {NativeImage} from "../assets/native-image"
+import {setLineStyle, setFill} from "../styles"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: CanvasImageSource
@@ -17,15 +19,26 @@ export class Circle extends Graphic implements CurveInterface, ImageHandlingInte
         counterClockWise: true
     }
 
+    /**
+     *
+     * @param game
+     * @param position
+     * @param radius
+     * @param styles warning: you can put line styling on this element
+     * @param srcImage
+     * @param toDisplay
+     * @param drawingOptions
+     */
     constructor(
         game: Game,
         position: Position,
         private radius: number,
+        styles?: GenericGraphicStylesInterface,
         srcImage?: string,
         toDisplay?: boolean,
         drawingOptions?: CurveDrawingOptionsInterface
     ) {
-        super(game, position, {x: radius, y: 0, z: 0}, toDisplay)
+        super(game, position, {width: radius, height: 0}, styles, toDisplay)
 
         if(drawingOptions) {
             this.setDrawingOptions(drawingOptions)
@@ -40,8 +53,18 @@ export class Circle extends Graphic implements CurveInterface, ImageHandlingInte
         }
     }
 
-    draw() {
-        if(!this.toDisplay) return
+    draw(notMandatory = false) {
+        /**
+         * Do not draw the shape if it's not mandatory (like with the cazan's internal drawing loop) and if the shape is
+         * hidden.
+         */
+        if(notMandatory && !this.toDisplay) return
+
+        setFill(this.game, this.styles!.graphic.color)
+
+        if(this.styles!.line) {
+            setLineStyle(this.game, this.styles!.line)
+        }
 
         if(this.image) {
             this.game.getCtx().save()

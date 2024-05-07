@@ -1,6 +1,7 @@
 import {CwExport} from "../types/cw"
 import {Dimensions, ImageHandlingInterface, Position} from "../types/graphics"
 import {Game} from "../game"
+import {GenericGraphicStylesInterface} from "../types/styles"
 import {Graphic} from "./graphic"
 import {NativeImage} from "../assets/native-image"
 
@@ -11,10 +12,11 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         game: Game,
         position: Position,
         dimensions: Dimensions,
+        styles?: GenericGraphicStylesInterface,
         srcImage?: string,
         toDisplay?: boolean
     ) {
-        super(game, position, dimensions, toDisplay)
+        super(game, position, dimensions, styles, toDisplay)
         if(srcImage) {
             this.image = new NativeImage()
             this.image.src = srcImage
@@ -24,16 +26,20 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         }
     }
 
-    draw() {
-        if(!this.toDisplay) return
+    draw(notMandatory = false) {
+        /**
+         * Do not draw the shape if it's not mandatory (like with the cazan's internal drawing loop) and if the shape is
+         * hidden.
+         */
+        if(notMandatory && !this.toDisplay) return
 
         if(this.image) {
             this.game.getCtx().drawImage(
                 this.image,
                 this.position.x,
                 this.position.y,
-                this.dimensions.x,
-                this.dimensions.y,
+                this.dimensions.width,
+                this.dimensions.height,
             )
             return
         }
@@ -41,8 +47,8 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         this.game.getCtx().fillRect(
             this.position.x,
             this.position.y,
-            this.dimensions.x,
-            this.dimensions.y,
+            this.dimensions.width,
+            this.dimensions.height,
         )
     }
 
@@ -64,9 +70,9 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
     _exportToCw(): CwExport {
         return [
             this.position,
-            {x: this.position.x + this.dimensions.x, y: this.position.y},
-            {x: this.position.x, y: this.position.y + this.dimensions.y},
-            {x: this.position.x + this.dimensions.x, y: this.position.y + this.dimensions.y},
+            {x: this.position.x + this.dimensions.width, y: this.position.y},
+            {x: this.position.x, y: this.position.y + this.dimensions.height},
+            {x: this.position.x + this.dimensions.width, y: this.position.y + this.dimensions.height},
         ]
     }
 }

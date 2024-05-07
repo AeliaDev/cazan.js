@@ -16,8 +16,29 @@ export declare interface LineStyleInterface {
  */
 
 export declare interface TextStyleInterface {
+    color: string
+    /**
+     * Use `TextStyleInterface.font` as the CSS property `font`.
+     */
     font?: string
     textAlign?: string & ("start" | "end" | "left" | "right" | "center")
     textBaseline?: string & ("top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom")
     direction?: string & ("ltr" | "rtl" | "inherit")
+}
+
+export declare interface GraphicStylesInterface {
+    color: string
+    type: 'fill' | 'stroke'
+}
+
+export declare interface GenericGraphicStylesInterface {
+    graphic: GraphicStylesInterface
+    /**
+     * only for Line
+     */
+    line: LineStyleInterface
+    /**
+     * only for Text
+     */
+    text: TextStyleInterface
 }
