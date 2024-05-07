@@ -42,3 +42,20 @@ export declare interface GenericGraphicStylesInterface {
      */
     text: TextStyleInterface
 }
+
+export declare interface GraphicStylesInterface {
+    color: string
+    type: 'fill' | 'stroke'
+}
+
+export declare interface GenericGraphicStylesInterface {
+    graphic: GraphicStylesInterface
+    /**
+     * only for Line
+     */
+    line: LineStyleInterface
+    /**
+     * only for Text
+     */
+    text: TextStyleInterface
+}
