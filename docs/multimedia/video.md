@@ -6,7 +6,7 @@ There's how to use cazan assets' API for videos. We'll use the ``cazan.assets`` 
 
 Little example:
 ````js
-let screen = new graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
+let screen = new graphics.Rectangle({game: game, position: {x: 10, y: 200}, dimensions: {width: 150, lenght: 100}})
 let video = new assets.Video(screen, ["video.mp4"])  //(1)!
 
 video.play()
@@ -33,7 +33,7 @@ class Video extends Multimedia {
     constructor(protected rectangle: Rectangle, sources: string[]) {}
 
     /**
-     * You don't really need to use it.
+     * You don't really need to use it. It's the function that permits to change of image on each frame.
      */
     process() {}
 }

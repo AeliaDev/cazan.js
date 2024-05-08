@@ -10,16 +10,19 @@ This is the parent class of each shape that you can draw with Cazan. Don't hesit
 class Graphic {
     readonly id!: number
 
-    constructor(
-        protected game: Game,
-        protected position: Position,
-        protected dimensions: Dimensions,
-        protected toDisplay = true
-    ) {}
+    constructor(options: GraphicConstructorInterface) {}
     
     draw(): void {}
 
     hide(): void {}
+
+    setupStylesForDrawing(): void {}
+
+    private setDefaultStyles(): void {}
+
+    setStyles(styles: GenericGraphicStylesInterface): void {}
+
+    getStyles(): GenericGraphicStylesInterface | undefined {}
     
     getId(): number {}
 
@@ -41,6 +44,18 @@ class Graphic {
      * This is an internal function made for cazanw plugin. You don't really have to use it, and even less when you don't have Cazanw configured on your project. 
      */
     _exportToCw(): CwExport {}
+}
+````
+
+By the way, there's ``GraphicContstructorInterface``.
+
+````ts
+interface GraphicConstructorInterface {
+    game: Game,
+    position: Position,
+    dimensions: Dimensions,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean
 }
 ````
 

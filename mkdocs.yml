@@ -16,6 +16,7 @@ nav:
       - graphics/line.md
       - graphics/circle.md
       - graphics/ellipse.md
+      - graphics/text.md
       - graphics/styling.md
   - Events:
       - events/index.md
@@ -27,6 +28,8 @@ nav:
       - multimedia/video.md
   - Utils:
       - utils/index.md
+  - Reference:
+      - reference/index.md
   - Community:
       - community/index.md
       - community/licence.md

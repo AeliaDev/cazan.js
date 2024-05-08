@@ -6,11 +6,11 @@ We'll use the ``cazan.graphics`` namespace here.
 
 There's how to create a line with Cazan.
 ````js
-let myLine = new graphics.Line(
-    game, 
-    {x: 10, y: 10},  //(1)! 
-    {x: 50, y: 150}  //(2)!
-)
+let myLine = new graphics.Line({
+    game: game, 
+    firstPoint: {x: 10, y: 10},  //(1)! 
+    secondPoint: {x: 50, y: 150}  //(2)!
+})
 ````
 
 1. Position of the first point.
@@ -21,12 +21,19 @@ let myLine = new graphics.Line(
 For other further information, see the page about ``Graphic``, the parent of ``Line``.
 
 ````ts
-export class Line extends Graphic {
-    constructor(
-        game: Game,
-        firstPoint: Position,
-        secondPoint: Position,
-        toDisplay?: boolean
-    ) {}
+class Line extends Graphic {
+    constructor(options: LineConstructorInterface) {}
 }
 ````
+
+Information about the constructor:
+
+`````ts
+interface LineConstructorInterface {
+    game: Game,
+    firstPoint: Position,
+    secondPoint: Position,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean
+}
+`````

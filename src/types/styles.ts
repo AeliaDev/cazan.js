@@ -4,8 +4,8 @@
  */
 export declare interface LineStyleInterface {
     width?: number
-    cap?: string & ("butt" | "round" | "square")
-    join?: string & ("round" | "bevel" | "miter")
+    cap?: "butt" | "round" | "square"
+    join?: "round" | "bevel" | "miter"
     miterLimit?: number
     dash?: [number, number]
     dashOffset?: number
@@ -21,9 +21,9 @@ export declare interface TextStyleInterface {
      * Use `TextStyleInterface.font` as the CSS property `font`.
      */
     font?: string
-    textAlign?: string & ("start" | "end" | "left" | "right" | "center")
-    textBaseline?: string & ("top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom")
-    direction?: string & ("ltr" | "rtl" | "inherit")
+    textAlign?: "start" | "end" | "left" | "right" | "center"
+    textBaseline?: "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"
+    direction?: "ltr" | "rtl" | "inherit"
 }
 
 export declare interface GraphicStylesInterface {

@@ -8,7 +8,7 @@ You can use the cazan I/O API to use popups. We are using the ``cazan.events.io`
 
 ### ``io.showMsg()``
 
-Use it when you want to tell to the user an important message, such an announcement or an error, for example.
+Use it when you want to tell to the user an important message, such as an announcement or an error, for example.
 
 ````js
 await io.showMsg({title: "myGame", msg: 'Unknown error', btnText: "Ok"})
@@ -80,12 +80,12 @@ By default, cazan applies a default style on popups;
 In fact, it appends a `<style id="cazan-popup-style" text="text/css">` in the end of the `<head>` of your HTML document.
 
 !!!tip
-    But if you define manually this HTML tag and putting in custom CSS to customize the popups, cazan won't override it.
+    But if you define manually this HTML tag and putting in custom CSS to customize the popups, Cazan won't override it, and your popup will be customized.
 
 !!! warning
     Attention: you can customize everything you want but if you want that it keeps working, don't customize `display`, `position` or `z-index`, these properties are needed because they will be used by cazan.
 
-## References
+## Reference
 
 - I/O API: ``IOEventInterface`` is used for typing ``io.showMsg()``, ``io.getUserConfirm()`` and ``io.getUserInput()`` params.
 ````ts

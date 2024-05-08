@@ -6,22 +6,22 @@ We'll use the ``cazan.graphics`` namespace here.
 
 Little example:
 ````js
-let myRect = new graphics.Rectangle(
-    game, 
-    {x: 10, y: 10}, 
-    {x: 50, y: 50}
-)
+let myRect = new graphics.Rectangle({
+    game: game, 
+    position: {x: 10, y: 10}, 
+    dimensions: {width: 50, height: 50},
+})
 ````
 
-You can add an image if you want and decide to not display it now.
-````js hl_lines="4-6 11"
-let myRect = new graphics.Rectangle(
-    game, 
-    {x: 10, y: 10}, 
-    {x: 50, y: 50},
-    'img.png',
-    false
-)
+You can add an image if you want and decide to not display the element right now.
+````js hl_lines="5-6 11"
+let myRect = new graphics.Rectangle({
+    game: game, 
+    position: {x: 10, y: 10}, 
+    dimensions: {width: 50, height: 50},
+    srcImage: 'img.png',
+    toDisplay: false
+})
 
 // ...
 
@@ -38,13 +38,20 @@ For other further information, see the page about ``Graphic`` and ``ImageHandlin
 class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: CanvasImageSource
 
-    constructor(
-        game: Game,
-        position: Position,
-        dimensions: Dimensions,
-        srcImage?: string,
-        toDisplay?: boolean
-    ) {}
+    constructor(options: RectangleConstructorInterface) {}
+}
+````
+
+Information about the constructor:
+
+````ts
+interface RectangleConstructorInterface {
+    game: Game,
+    position: Position,
+    dimensions: Dimensions,
+    styles?: GenericGraphicStylesInterface,
+    srcImage?: string,
+    toDisplay?: boolean
 }
 ````
 
