@@ -81,6 +81,7 @@ export class Game {
                     return
                 }
                 this.fpsIncrement++
+                return
             }
 
             this.draw()
@@ -99,7 +100,7 @@ export class Game {
 
     /**
      * Register shapes in the shapes list for frame updating
-     * Nota: if a frame isn't registered, it won't be actualized on the next frame updating.
+     * Nota: if an element isn't registered, it won't be actualized on the next frame updating.
      *
      * @param graphics
      */
@@ -112,7 +113,7 @@ export class Game {
     }
 
     /**
-     * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `shape.hide()`.
+     * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `element.hide()`.
      * @param graphicId
      */
     unregisterGraphic(graphicId: number): void {

@@ -28,6 +28,7 @@ nav:
       - multimedia/video.md
   - Utils:
       - utils/index.md
+      - utils/fps.md
   - Reference:
       - reference/index.md
   - Community:

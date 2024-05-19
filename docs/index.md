@@ -28,7 +28,7 @@ Cazan's Multimedia API helps you to include audios and videos in your game only 
 
 ## Utilities
 
-...
+Here some utilities provided with Cazan.
 
 ### Keyboard events
 
