@@ -1,24 +1,64 @@
+import {CwExport} from "../types/cw"
+import {Dimensions, GraphicConstructorInterface, Position} from "../types/graphics"
 import {Game} from "../game"
-import {Dimensions, Position} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {GenericGraphicStylesInterface} from "../types/styles"
+import {setFill, setStroke} from "../styles"
 
 export class Graphic {
     readonly id!: number
+    protected game: Game
+    protected position: Position
+    protected dimensions: Dimensions
+    protected styles?: GenericGraphicStylesInterface
+    protected toDisplay = true
 
-    constructor(
-        protected game: Game,
-        protected position: Position,
-        protected dimensions: Dimensions,
-        protected toDisplay = true
-    ) {
-        this.id = this.game.getShapes().length
-        this.game.registerShapes(this)
+    /**
+     *
+     * @param options GraphicConstructorInterface
+     */
+    constructor(options: GraphicConstructorInterface) {
+        this.game = options.game
+        this.position = options.position
+        this.dimensions = options.dimensions
+        this.styles = options.styles
+        this.toDisplay = options.toDisplay ? options.toDisplay : true
+
+        this.id = this.game.getGraphics().length
+        this.game.registerGraphic(this)
+
+        this.setDefaultStyles()
     }
 
-    draw(): void {}
+    draw(notMandatory?: boolean): void {}
+
+    destroy() {
+        this.game.unregisterGraphic(this.id)
+    }
 
     hide(): void {
         this.toDisplay = false
+    }
+
+    setupStylesForDrawing() {
+        !this.styles ? this.setDefaultStyles() : undefined
+
+        this.styles!.graphic.type === 'fill'
+            ? setFill(this.game, this.styles!.graphic.color)
+            : setStroke(this.game, this.styles!.graphic.color)
+    }
+
+    private setDefaultStyles() {
+        if(!this.styles) {
+            this.styles = this.game.getGraphics()[this.game.getGraphics().length-1]?.getStyles()
+        }
+    }
+
+    setStyles(styles: GenericGraphicStylesInterface) {
+        this.styles = styles
+    }
+
+    getStyles() {
+        return this.styles
     }
 
     getId() {
@@ -42,12 +82,12 @@ export class Graphic {
         return this.position
     }
 
-    setDimensions(options: {x?: number; y?: number}) {
-        if(options.x) {
-            this.dimensions.x = options.x
+    setDimensions(options: {width?: number; height?: number}) {
+        if(options.width) {
+            this.dimensions.width = options.width
         }
-        if(options.y) {
-            this.dimensions.y = options.y
+        if(options.height) {
+            this.dimensions.height = options.height
         }
     }
 

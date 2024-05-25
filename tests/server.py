@@ -13,10 +13,10 @@ class Handler(BaseHTTPRequestHandler):
                 filename = 'app.js'
                 content_type = 'text/javascript'
             elif self.path == '/cazan.js':
-                filename = '../dist/cazan.js'
+                filename = '../dist/lib/cazan.js'
                 content_type = 'text/javascript'
             elif self.path == '/cazan.min.js':
-                filename = '../dist/cazan.min.js'
+                filename = '../dist/lib/cazan.min.js'
                 content_type = 'text/javascript'
             elif self.path == '/img.png':
                 filename = 'img.png'

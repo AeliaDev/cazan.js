@@ -3,14 +3,14 @@ const path = require("path")
 const pkg = require('../package.json')
 
 const banner = "/**!\n" +
-    " * Cazan " + pkg.version + " (https://github.com/AeliaDev/cazan.js)\n" +
-    " * Copyright 2023 " + pkg.author + "\n" +
+    " * Cazan " + pkg.version + " (https://aeliadev.github.io/cazan.js)\n" +
+    " * Copyright 2024 " + pkg.author + "\n" +
     " * Licensed under MIT (https://github.com/AeliaDev/cazan.js/blob/main/LICENSE)\n" +
     " */\n"
 
 const bannerDts = "/**!\n" +
-    " * Cazan declaration files for TypeScript " + pkg.version + " (https://github.com/AeliaDev/cazan.js)\n" +
-    " * Copyright 2023 " + pkg.author + "\n" +
+    " * Cazan declaration files for TypeScript " + pkg.version + " (https://aeliadev.github.io/cazan.js)\n" +
+    " * Copyright 2024 " + pkg.author + "\n" +
     " * Licensed under MIT (https://github.com/AeliaDev/cazan.js/blob/main/LICENSE)\n" +
     " */\n"
 

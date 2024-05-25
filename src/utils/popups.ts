@@ -2,7 +2,7 @@ import {PopupInterface} from "../types/events"
 
 export class Popup {
     readonly data!: PopupInterface
-    private popupElement!: HTMLElement
+    readonly popupElement!: HTMLElement
 
     constructor(options: PopupInterface) {
         this.data = options
@@ -54,7 +54,7 @@ export class Popup {
      * - the input only handles characters, "Space" and "Backspace" yet. So the user can't use controls to copy/paste
      * strings, etc...
      * - if the input value length doesn't belong to the defined interval ([minLength; maxLength]), the button will be
-     * disabled.
+     * disabled (by default, the interval is [0;255]).
      */
     async getResponse(): Promise<any> {
         this.popupElement.style.display = "flex"

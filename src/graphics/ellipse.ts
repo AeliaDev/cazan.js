@@ -1,31 +1,51 @@
-import {Graphic} from "./graphic"
+import {CurveDrawingOptionsInterface, CurveInterface, EllipseConstructorInterface, Position} from "../types/graphics"
+import {CwExport} from "../types/cw"
 import {Game} from "../game"
-import {CurveDrawingOptionsInterface, CurveInterface, Position} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {GenericGraphicStylesInterface} from "../types/styles"
+import {Graphic} from "./graphic"
+import {setLineStyle, setStroke} from "../styles"
 
 export class Ellipse extends Graphic implements CurveInterface {
+    private radiusX: number
+    private radiusY: number
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
         rotation: Math.PI / 4
     }
 
-    constructor(
-        game: Game,
-        position: Position,
-        protected radiusX: number,
-        protected radiusY: number,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {
-        super(game, position, {x: radiusX, y: radiusY}, toDisplay)
+    /**
+     * You can use `options.styles.line` for this shape.
+     * @param options EllipseConstructorInterface
+     */
+    constructor(options: EllipseConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: {width: options.radiusX, height: options.radiusY},
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
 
-        if(drawingOptions) {
-            this.setDrawingOptions(drawingOptions)
+        this.radiusX = options.radiusX
+        this.radiusY = options.radiusY
+
+        if(options.drawingOptions) {
+            this.setDrawingOptions(options.drawingOptions)
         }
     }
 
-    draw() {
+    draw(notMandatory = false) {
+        /**
+         * Do not draw the shape if it's not mandatory (like with the cazan's internal drawing loop) and if the shape is
+         * hidden.
+         */
+        if(notMandatory && !this.toDisplay) return
+
+        setStroke(this.game, this.styles!.graphic.color)
+
+        setLineStyle(this.game, this.styles!.line)
+
         this.game.getCtx().beginPath()
         this.game.getCtx().ellipse(
             this.position.x,

@@ -1,40 +1,47 @@
+import {CwExport} from "../types/cw"
+import {ImageHandlingInterface, RectangleConstructorInterface} from "../types/graphics"
 import {Graphic} from "./graphic"
-import {Game} from "../game"
-import {Dimensions, ImageHandlingInterface, Position, NativeImage} from "../types/graphics"
-import {CwExport} from "../types/global"
+import {NativeImage} from "../assets/native-image"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: CanvasImageSource
 
-    constructor(
-        game: Game,
-        position: Position,
-        dimensions: Dimensions,
-        srcImage?: string,
-        toDisplay?: boolean
-    ) {
-        super(game, position, dimensions, toDisplay)
-        if(srcImage) {
-            this.image = new NativeImage()
-            this.image.src = srcImage
+    /**
+     *
+     * @param options RectangleConstructorInterface
+     */
+    constructor(options: RectangleConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: options.dimensions,
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
 
-            // is this necessary?
+        if(options.srcImage) {
+            this.image = new NativeImage()
+            this.image.src = options.srcImage
             this.image.onload = () => {
-                typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
+                typeof options.toDisplay === "undefined" || options.toDisplay ? this.draw() : null
             }
         }
     }
 
-    draw() {
-        if(!this.toDisplay) return
+    draw(notMandatory = false) {
+        /**
+         * Do not draw the shape if it's not mandatory (like with the cazan's internal drawing loop) and if the shape is
+         * hidden.
+         */
+        if(notMandatory && !this.toDisplay) return
 
         if(this.image) {
             this.game.getCtx().drawImage(
                 this.image,
                 this.position.x,
                 this.position.y,
-                this.dimensions.x,
-                this.dimensions.y,
+                this.dimensions.width,
+                this.dimensions.height,
             )
             return
         }
@@ -42,8 +49,8 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         this.game.getCtx().fillRect(
             this.position.x,
             this.position.y,
-            this.dimensions.x,
-            this.dimensions.y,
+            this.dimensions.width,
+            this.dimensions.height,
         )
     }
 
@@ -65,9 +72,9 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
     _exportToCw(): CwExport {
         return [
             this.position,
-            {x: this.position.x + this.dimensions.x, y: this.position.y},
-            {x: this.position.x, y: this.position.y + this.dimensions.y},
-            {x: this.position.x + this.dimensions.x, y: this.position.y + this.dimensions.y},
+            {x: this.position.x + this.dimensions.width, y: this.position.y},
+            {x: this.position.x, y: this.position.y + this.dimensions.height},
+            {x: this.position.x + this.dimensions.width, y: this.position.y + this.dimensions.height},
         ]
     }
 }

@@ -1,5 +1,5 @@
-import {Rectangle} from "../graphics"
 import {Multimedia} from "./multimedia"
+import {Rectangle} from "../graphics"
 
 export class Video extends Multimedia {
     /**

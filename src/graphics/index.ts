@@ -1,13 +1,15 @@
-import {Graphic} from "./graphic"
 import {Circle} from "./circle"
 import {Ellipse} from "./ellipse"
-import {Rectangle} from "./rectangle"
+import {Graphic} from "./graphic"
 import {Line} from "./line"
+import {Rectangle} from "./rectangle"
+import {Text} from "./text"
 
 export {
-    Graphic,
-    Rectangle,
-    Line,
     Circle,
     Ellipse,
+    Graphic,
+    Line,
+    Rectangle,
+    Text,
 }

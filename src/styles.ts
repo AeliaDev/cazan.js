@@ -1,7 +1,7 @@
-import {Game} from "./game";
-import {InvalidArgumentException} from "./exceptions";
-import {LineStyleInterface, TextStyleInterface} from "./types/styles";
-import {validateRgbaString} from "./utils/validations";
+import {Game} from "./game"
+import {InvalidArgumentException} from "./exceptions"
+import {LineStyleInterface, TextStyleInterface} from "./types/styles"
+import {validateRgbaString} from "./utils/validations"
 
 /**
  * Set fill for drawing shapes.
@@ -55,6 +55,7 @@ export function setLineStyle(game: Game, options: LineStyleInterface) {
  * @param options {TextStyleInterface}
  */
 export function setTextStyle(game: Game, options: TextStyleInterface) {
+    game.getCtx().fillStyle = options.color
     options.font ? game.getCtx().font = options.font : null
     options.textAlign ? game.getCtx().textAlign = options.textAlign : null
     options.textBaseline ? game.getCtx().textBaseline = options.textBaseline : null

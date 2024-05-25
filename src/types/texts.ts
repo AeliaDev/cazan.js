@@ -1,9 +1,16 @@
-import {CRenderingContext} from "./global";
 
 export declare interface TextInterface {
     text: string
-    type: string & ("fill" | "stroke")
-    x: number
-    y: number
+    type: "fill" | "stroke"
+    x?: number
+    y?: number
+    maxWidth?: number
+}
+
+export declare interface UpdateTextInterface {
+    text?: string
+    type?: "fill" | "stroke"
+    x?: number
+    y?: number
     maxWidth?: number
 }

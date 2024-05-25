@@ -1,3 +1,6 @@
+import {Game} from "../game"
+import {GenericGraphicStylesInterface} from "./styles"
+import {TextInterface} from "./texts"
 
 export interface Position {
     x: number
@@ -5,9 +8,8 @@ export interface Position {
 }
 
 export interface Dimensions {
-    x: number
-    y: number
-    z?: number
+    width: number
+    height: number
 }
 
 export interface ImageHandlingInterface {
@@ -32,4 +34,56 @@ export interface CurveDrawingOptionsInterface {
     rotation?: number
 }
 
-export const NativeImage = Image
+export declare interface GraphicConstructorInterface {
+    game: Game,
+    position: Position,
+    dimensions: Dimensions,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean
+}
+
+export declare interface LineConstructorInterface {
+    game: Game,
+    firstPoint: Position,
+    secondPoint: Position,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean
+}
+
+export declare interface RectangleConstructorInterface {
+    game: Game,
+    position: Position,
+    dimensions: Dimensions,
+    styles?: GenericGraphicStylesInterface,
+    srcImage?: string,
+    toDisplay?: boolean
+}
+
+export declare interface TextConstructorInterface {
+    game: Game,
+    position: Position,
+    dimensions: Dimensions,
+    text: TextInterface,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean
+}
+
+export declare interface CircleConstructorInterface {
+    game: Game,
+    position: Position,
+    radius: number,
+    styles?: GenericGraphicStylesInterface,
+    srcImage?: string,
+    toDisplay?: boolean,
+    drawingOptions?: CurveDrawingOptionsInterface
+}
+
+export declare interface EllipseConstructorInterface {
+    game: Game,
+    position: Position,
+    radiusX: number,
+    radiusY: number,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean,
+    drawingOptions?: CurveDrawingOptionsInterface
+}

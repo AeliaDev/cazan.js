@@ -26,7 +26,7 @@ func jsHandler(w http.ResponseWriter, r *http.Request) {
 
 func cazanJsHandler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "text/javascript")
-    content, err := os.ReadFile("../dist/cazan.js")
+    content, err := os.ReadFile("../dist/lib/cazan.js")
     if err != nil {
         log.Fatal(err)
     }
@@ -35,7 +35,7 @@ func cazanJsHandler(w http.ResponseWriter, r *http.Request) {
 
 func cazanMinJsHandler(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "text/javascript")
-    content, err := os.ReadFile("../dist/cazan.min.js")
+    content, err := os.ReadFile("../dist/lib/cazan.min.js")
     if err != nil {
         log.Fatal(err)
     }

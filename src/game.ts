@@ -18,7 +18,11 @@ export class Game {
      * @param canvas
      * @param fps Frames per second
      */
-    constructor(protected ctx: CRenderingContext, protected canvas: HTMLCanvasElement, fps: number = 100) {
+    constructor(
+        protected ctx: CRenderingContext,
+        protected canvas: HTMLCanvasElement,
+        fps: number = 100
+    ) {
         this.fps = fps
     }
 
@@ -77,6 +81,7 @@ export class Game {
                     return
                 }
                 this.fpsIncrement++
+                return
             }
 
             this.draw()
@@ -86,17 +91,20 @@ export class Game {
     draw(): void {
         this.clearCanvas()
         this.graphics.forEach(graphic => {
-            if(graphic) graphic.draw()
+            if(graphic) {
+                graphic.setupStylesForDrawing()
+                graphic.draw(true)
+            }
         })
     }
 
     /**
      * Register shapes in the shapes list for frame updating
-     * Nota: if a frame isn't registered, it won't be actualized on the next frame updating.
+     * Nota: if an element isn't registered, it won't be actualized on the next frame updating.
      *
      * @param graphics
      */
-    registerShapes(graphics: Graphic | (Graphic)[]): void {
+    registerGraphic(graphics: Graphic | (Graphic)[]): void {
         if(Array.isArray(graphics)) {
             this.graphics.concat(graphics)
             return
@@ -105,17 +113,17 @@ export class Game {
     }
 
     /**
-     * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `shape.hide()`.
+     * Use it when you're sure that you don't need this shape anymore. If you just want to hide it prefer `element.hide()`.
      * @param graphicId
      */
-    unregisterShape(graphicId: number): void {
+    unregisterGraphic(graphicId: number): void {
         this.graphics[graphicId] = null
     }
 
     /**
      * Returns the shapes registered in Game.
      */
-    getShapes() {
+    getGraphics() {
         return this.graphics
     }
 

@@ -1,49 +1,64 @@
-import {Graphic} from "./graphic"
 import {
+    CircleConstructorInterface,
     CurveDrawingOptionsInterface,
     CurveInterface,
-    ImageHandlingInterface,
-    NativeImage,
-    Position
+    ImageHandlingInterface
 } from "../types/graphics"
-import {Game} from "../game"
-import {CwExport} from "../types/global"
+import {CwExport} from "../types/cw"
+import {Graphic} from "./graphic"
+import {NativeImage} from "../assets/native-image"
+import {setLineStyle, setFill} from "../styles"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: CanvasImageSource
+    private radius!: number
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
         counterClockWise: true
     }
 
-    constructor(
-        game: Game,
-        position: Position,
-        private radius: number,
-        srcImage?: string,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {
-        super(game, position, {x: radius, y: 0, z: 0}, toDisplay)
+    /**
+     * You can use `options.styles.line` for this shape.
+     * @param options CircleConstructorInterface
+     */
+    constructor(options: CircleConstructorInterface) {
+        super({
+            game: options.game,
+            position: options.position,
+            dimensions: {width: options.radius, height: 0},
+            styles: options.styles,
+            toDisplay: options.toDisplay
+        })
 
-        if(drawingOptions) {
-            this.setDrawingOptions(drawingOptions)
+        this.radius = options.radius
+        this.drawingOptions = options.drawingOptions ? options.drawingOptions : this.drawingOptions
+
+        if(options.drawingOptions) {
+            this.setDrawingOptions(options.drawingOptions)
         }
 
-        if(srcImage) {
+        if(options.srcImage) {
             this.image = new NativeImage()
-            this.image.src = srcImage
-
-            // is this necessary?
+            this.image.src = options.srcImage
             this.image.onload = () => {
-                typeof toDisplay === "undefined" || toDisplay ? this.draw() : null
+                typeof this.toDisplay === "undefined" || this.toDisplay ? this.draw() : null
             }
         }
     }
 
-    draw() {
-        if(!this.toDisplay) return
+    draw(notMandatory = false) {
+        /**
+         * Do not draw the shape if it's not mandatory (like with the cazan's internal drawing loop) and if the shape is
+         * hidden.
+         */
+        if(notMandatory && !this.toDisplay) return
+
+        setFill(this.game, this.styles!.graphic.color)
+
+        if(this.styles!.line) {
+            setLineStyle(this.game, this.styles!.line)
+        }
 
         if(this.image) {
             this.game.getCtx().save()

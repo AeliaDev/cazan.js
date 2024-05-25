@@ -8,8 +8,6 @@ async function runApp() {
     game.setSize(600, 350)
     game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
 
-    cazan.styles.setFill(game, "rgba(255,165,0,1)")
-
     console.log("Screen refresh rate: ", await game.getScreenRefreshRate())
 
     // use cazan's build-in popups API...
@@ -30,20 +28,72 @@ async function runApp() {
     console.log(await popup.getResponse())
     popup.removePopup()*/
 
-    let testRect = new cazan.graphics.Rectangle(game, {x: 10, y: 10}, {x: 50, y: 50})
-    let testLine = new cazan.graphics.Line(game, {x: 10, y: 10}, {x: 50, y: 150})
-    let image = new cazan.graphics.Rectangle(game, {x: 120, y: 10}, {x: 200, y: 200}, "img.png")
-    let testCircle = new cazan.graphics.Circle(game, {x: 540, y: 100}, 25)
-    let testCircleWithImage = new cazan.graphics.Circle(game, {x: 540, y: 160}, 25, "img.png")
+    const orangeStyle = {
+        color: "rgba(255,165,0,1)",
+        type: "fill"
+    }
+
+    const blackStyle = {
+        color: "rgba(0,0,0,1)",
+        type: "fill"
+    }
+
+    let testRect = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 10, y: 10},
+        dimensions: {width: 50, height: 50},
+        styles: {
+            graphic: blackStyle
+        }
+    })
+
+    let testLine = new cazan.graphics.Line({
+        game: game,
+        firstPoint: {x: 10, y: 10},
+        secondPoint: {x: 50, y: 150},
+        styles: {
+            graphic: orangeStyle,
+            line: {}
+        }
+    })
+
+    let image = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 120, y: 10},
+        dimensions: {width: 200, height: 200},
+        srcImage: "img.png",
+        styles: {graphic: orangeStyle},
+    })
+
+    let testCircle = new cazan.graphics.Circle({
+        game: game,
+        position: {x: 540, y: 100},
+        radius: 25,
+        styles: {
+            graphic: blackStyle
+        }
+    })
+
+    let testCircleWithImage = new cazan.graphics.Circle({
+        game: game,
+        position: {x: 540, y: 160},
+        radius: 25,
+        styles: {graphic: orangeStyle},
+        srcImage: "img.png"
+    })
 
     // video demonstration
-    let testRect2 = new cazan.graphics.Rectangle(game, {x: 10, y: 200}, {x: 150, y: 100})
+    let testRect2 = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 10, y: 200},
+        dimensions: {x: 150, y: 100}
+    })
     let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
 
     video.play()
     video.setLoop(true)
 
-    cazan.events.keyboard.setShortcutHandler({
+    cazan.events.keyboard.setKeyboardHandler({
         on: 'keydown',
         shortcutCallback: (event) => (event.ctrlKey || event.metaKey) && event.key === 's',
         callback: () => {
@@ -57,8 +107,7 @@ async function runApp() {
         }
     })
 
-    cazan.events.keyboard.setShortcutHandler({
-        on: 'keydown',
+    cazan.events.keyboard.setKeyboardHandler({
         shortcutCallback: (event) => event.key === 'ArrowLeft',
         callback: () => {
             testRect.setPosition({
@@ -67,8 +116,7 @@ async function runApp() {
         }
     })
 
-    cazan.events.keyboard.setShortcutHandler({
-        on: 'keydown',
+    cazan.events.keyboard.setKeyboardHandler({
         shortcutCallback: (event) => event.key === 'ArrowRight',
         callback: () => {
             testRect.setPosition({
@@ -87,9 +135,27 @@ async function runApp() {
             audio.pause()
         }, 3000)*/
         image.toggleDisplay()
-        game.unregisterShape(testLine.id)
+        game.unregisterGraphic(testLine.id)
     }, 5000);
     audio.play()
+
+    let testText = new cazan.graphics.Text({
+        game: game,
+        position: {x: 400, y: 150},
+        dimensions: {width: 100, height: 15},
+        text: {
+            text: "Hello, World!",
+            type: "fill",
+            x: 5,
+            y: 5
+        },
+        styles: {
+            graphic: blackStyle,
+            text: {
+                color: "#fff"
+            }
+        }
+    })
 
     game.update()
 }

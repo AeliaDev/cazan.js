@@ -6,12 +6,12 @@ We'll use the ``cazan.graphics`` namespace here.
 
 Little example:
 ````js
-let myEllispe = new graphics.Ellipse(
-    game, 
-    {x: 540, y: 100}, //(1)!
-    25, //(2)!
-    15, //(3)!
-)
+let myEllispe = new graphics.Ellipse({
+    game: game, 
+    position: {x: 540, y: 100}, //(1)!
+    radiusX: 25, //(2)!
+    radiusY: 15, //(3)!
+})
 ````
 
 1. The center of the ellipse.
@@ -27,26 +27,33 @@ rad and an end circle different from 2pi rad (the circle is not complete).
 For other further information, see the page about ``Graphic``, ``CurveInterface`` and ``CurveDrawingOptionsInterface``.
 
 ````ts
-export class Ellipse extends Graphic implements CurveInterface {
+class Ellipse extends Graphic implements CurveInterface {
     private drawingOptions: CurveDrawingOptionsInterface = {
         startAngle: 0,
         endAngle: Math.PI * 2,
         rotation: Math.PI / 4
     }
 
-    constructor(
-        game: Game,
-        position: Position,
-        protected radiusX: number,
-        protected radiusY: number,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {}
+    constructor(options: EllipseConstructorInterface) {}
 
 
     setRadius(options: {x?: number, y?: number}): void {}
 
     getRadius(): {x: number, y: number} {}
+}
+````
+
+Information about the constructor:
+
+````ts
+interface EllipseConstructorInterface {
+    game: Game,
+    position: Position,
+    radiusX: number,
+    radiusY: number,
+    styles?: GenericGraphicStylesInterface,
+    toDisplay?: boolean,
+    drawingOptions?: CurveDrawingOptionsInterface
 }
 ````
 

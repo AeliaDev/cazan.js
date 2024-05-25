@@ -6,11 +6,11 @@ We'll use the ``cazan.graphics`` namespace here.
 
 Little example:
 ````js
-let myCircle = new graphics.Circle(
-    game, 
-    {x: 540, y: 100}, //(1)!
-    25 //(2)!
-)
+let myCircle = new graphics.Circle({
+    game: game,
+    position: {x: 540, y: 100}, //(1)!
+    radius: 25 //(2)!
+})
 ````
 
 1. The center of the circle.
@@ -30,19 +30,25 @@ class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
     private image?: CanvasImageSource
     private drawingOptions: CurveDrawingOptionsInterface
 
-    constructor(
-        game: Game,
-        position: Position,
-        private radius: number,
-        srcImage?: string,
-        toDisplay?: boolean,
-        drawingOptions?: CurveDrawingOptionsInterface
-    ) {
-    }
+    constructor(options: CircleConstructorInterface) {}
 
     setRadius(radius: number): void {}
 
     getRadius(): number {}
+}
+````
+
+Information about the constructor:
+
+````ts
+interface CircleConstructorInterface {
+    game: Game,
+    position: Position,
+    radius: number,
+    styles?: GenericGraphicStylesInterface,
+    srcImage?: string,
+    toDisplay?: boolean,
+    drawingOptions?: CurveDrawingOptionsInterface
 }
 ````
 

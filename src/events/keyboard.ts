@@ -1,6 +1,8 @@
-import {SetKeyboardShortcutInterface} from "../types/events"
+import {SetKeyboardHandlerInterface} from "../types/events"
 
-export function setShortcutHandler(options: SetKeyboardShortcutInterface) {
+export function setKeyboardHandler(options: SetKeyboardHandlerInterface) {
+    !options.on ? options.on = "keydown" : undefined
+
     document.addEventListener(options.on, (event) => {
         event.preventDefault()
         if(options.shortcutCallback(event)) {
