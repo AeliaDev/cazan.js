@@ -13,8 +13,7 @@ Note: Another system for installing is in conception.
 3) Build assets
    ``yarn run build``
 4) Launch tests server
-    - With Go ``cd tests && go run server.go``
-    - With Python ``cd tests && python server.py``
+``cd tests && node server.js``
 
 ## Use
 
