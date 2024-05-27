@@ -1,4 +1,4 @@
-import {CRenderingContext} from "./types/global"
+import {CRenderingContext, Config} from "./types/global"
 import {Graphic} from "./graphics"
 
 /**
@@ -9,7 +9,6 @@ import {Graphic} from "./graphics"
  */
 export class Game {
     private graphics: (Graphic | null)[] = []
-    private fps: number
     private fpsIncrement: number = 0
 
     /**
@@ -17,13 +16,14 @@ export class Game {
      * @param ctx
      * @param canvas
      * @param fps Frames per second
+     * @param config
      */
     constructor(
         protected ctx: CRenderingContext,
         protected canvas: HTMLCanvasElement,
-        fps: number = 100
+        private fps: number = 100,
+        private config: Config,
     ) {
-        this.fps = fps
     }
 
     /**
@@ -57,6 +57,10 @@ export class Game {
      */
     getCtx(): CRenderingContext {
         return this.ctx
+    }
+
+    getConfig(): Config {
+        return this.config
     }
 
     /**
