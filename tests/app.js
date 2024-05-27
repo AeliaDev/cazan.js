@@ -2,7 +2,7 @@
 import * as cazan from "/cazan.js"
 
 async function runApp() {
-    let game = cazan.setup("#game", "2d")
+    let game = await cazan.setup("#game", "2d")
     let audio = new cazan.assets.Audio(["audio.mp3"])
 
     game.setSize(600, 350)
@@ -137,7 +137,7 @@ async function runApp() {
         image.toggleDisplay()
         game.unregisterGraphic(testLine.id)
     }, 5000);
-    audio.play()
+    //audio.play()
 
     let testText = new cazan.graphics.Text({
         game: game,
