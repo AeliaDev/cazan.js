@@ -19,7 +19,8 @@
     "clear-dts-files": "node scripts/deleteDtsFiles.js",
     "add-banners": "node scripts/addBannersForDistFiles.js",
     "bundle-dts": "dts-bundle-generator dist/lib/index.d.ts --out-file dist/lib/cazan.d.ts --no-banner && yarn run clear-dts-files && yarn run add-banners",
-    "release": "rollup -c && yarn run bundle-dts"
+    "release": "rollup -c && yarn run bundle-dts",
+    "launch-test" : "cd tests && node server.js"
   },
   "dependencies": {
     "rollup-plugin-terser": "^7.0.2",

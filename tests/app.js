@@ -86,7 +86,7 @@ async function runApp() {
     let testRect2 = new cazan.graphics.Rectangle({
         game: game,
         position: {x: 10, y: 200},
-        dimensions: {x: 150, y: 100}
+        dimensions: {width: 150, height: 100}
     })
     let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
 
