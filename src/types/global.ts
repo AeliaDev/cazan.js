@@ -8,6 +8,7 @@ export declare type Config = {
     name: string
     version: string
     author: string
+    useAutoplayForMultimedia?: boolean
     plugins?: ConfigPlugin[]
 }
 
