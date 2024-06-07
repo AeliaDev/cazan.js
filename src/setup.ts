@@ -1,6 +1,8 @@
 import {ContextNotFoundException} from "./exceptions/index"
 import {Config, CRenderingContext} from "./types/global"
 import {Game} from "./game"
+import {permissions} from "./events"
+import {checkAndEnableMultimediaAutoplay} from "./events/permissions";
 
 /**
  * Setup cazan
@@ -32,6 +34,10 @@ export async function setup(
                 author: "john doe",
                 plugins: []
             }
+        }
+
+        if(config.useAutoplayForMultimedia) {
+            await permissions.checkAndEnableMultimediaAutoplay()
         }
 
         return new Game(canvas.getContext(context) as CRenderingContext, canvas, fps, config)
