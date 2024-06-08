@@ -51,39 +51,25 @@ export class Popup {
 
     /**
      * Nota (for prompts):
-     * - the input only handles characters, "Space" and "Backspace" yet. So the user can't use controls to copy/paste
-     * strings, etc...
      * - if the input value length doesn't belong to the defined interval ([minLength; maxLength]), the button will be
      * disabled (by default, the interval is [0;255]).
      */
     async getResponse(): Promise<any> {
         this.popupElement.style.display = "flex"
 
-        if(this.data.type === "show") {
-            return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
+            if(this.data.type === "show") {
                 document.querySelector('#cazan-popup-confirm')?.addEventListener(
                     'click',
                     () => {
                         resolve(true)
                     }
                 )
-            })
-        } else if(this.data.type === "prompt") {
-            return new Promise((resolve, reject) => {
+            } else if(this.data.type === "prompt") {
                 let inputElement: HTMLInputElement = document.querySelector("#cazan-popup-input")!
                 let confirmBtnElement: HTMLButtonElement = document.querySelector("#cazan-popup-confirm")!
 
                 inputElement.addEventListener('keydown', (event: KeyboardEvent) => {
-                    event.preventDefault()
-
-                    if(event.key === "Backspace") {
-                        inputElement.value = inputElement.value.slice(0, -1)
-                    } else if(event.key === "Space") {
-                        inputElement.value += " "
-                    } else if(event.key.length === 1) {
-                        inputElement.value += event.key
-                    }
-
                     if(
                         inputElement.value.length >= this.data.minLength!
                         && inputElement.value.length <= this.data.maxLength!
@@ -108,9 +94,7 @@ export class Popup {
                         }
                     }
                 )
-            })
-        } else if(this.data.type === "confirm") {
-            return new Promise((resolve, reject) => {
+            } else if(this.data.type === "confirm") {
                 document.querySelector("#cazan-popup-yes")?.addEventListener(
                     "click",
                     () => {
@@ -123,10 +107,8 @@ export class Popup {
                         resolve(false)
                     }
                 )
-            })
-        }
-
-        return new Promise((resolve, reject) => reject("Type undefined"))
+            }
+        })
     }
 
     removePopup() {

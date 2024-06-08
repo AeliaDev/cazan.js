@@ -35,17 +35,21 @@ http.createServer(function (req, res) {
         resContentType = 'text/plain'
     }
 
-    if(PATHS[url]) {
-        resContent = fs.readFileSync(PATHS[url])
-    } else {
-        try {
+    try {
+        if(PATHS[url]) {
+            resContent = fs.readFileSync(PATHS[url])
+        } else {
             resContent = fs.readFileSync(`.${url}`)
-        } catch (e) {}  // file not found
-    }
+        }
+    } catch (e) {}  // file not found
 
     if (resContent === '') {
         res.writeHead(404, {'Content-Type': 'text/plain'})
         res.write('404 Not Found')
+
+        if(url === "/cazan.js" || url === "/cazan.min.js") {
+            console.error("Error: you didn't build Cazan or you didn't build it in /dist/lib. Please execute `yarn run build` or `yarn run release` and relaunch this server.")
+        }
     } else {
         res.writeHead(200, {'Content-Type': resContentType})
         res.write(resContent)
