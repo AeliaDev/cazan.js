@@ -1,6 +1,21 @@
 const http = require('http')
 const fs = require('fs')
 
+
+const CONTENT_TYPES = {
+    js: 'text/javascript',
+    png: 'image/png',
+    mp3: 'audio/mpeg',
+    mp4: 'video/mp4',
+    json: 'application/json',
+}
+
+const PATHS = {
+    "/": "./index.html",
+    "/cazan.js": "../dist/lib/cazan.js",
+    "/cazan.min.js": "../dist/lib/cazan.min.js",
+}
+
 function getFileExt(file) {
     return file.split('.')[file.split('.').length - 1]
 }
@@ -12,37 +27,17 @@ http.createServer(function (req, res) {
 
     console.log(`Request: ${url}`)
 
-    if(getFileExt(url) === 'js') {
-        resContentType = 'text/javascript'
-    }
-    else if(getFileExt(url) === 'png') {
-        resContentType = 'image/png'
-    }
-    else if(getFileExt(url) === 'mp3') {
-        resContentType = 'audio/mpeg'
-    }
-    else if(getFileExt(url) === 'mp4') {
-        resContentType = 'video/mp4'
-    }
-    else if(getFileExt(url) === 'json') {
-        resContentType = 'application/json'
-    }
-    else if(url === "/"){
+    if(url === "/"){
         resContentType = 'text/html'
+    } else if(CONTENT_TYPES[getFileExt(url)]) {
+        resContentType = CONTENT_TYPES[getFileExt(url)]
     } else {
         resContentType = 'text/plain'
     }
 
-    if(url === "/cazan.js") {
-        resContent = fs.readFileSync(`../dist/lib/cazan.js`)
-    }
-    else if(url === "/cazan.min.js") {
-        resContent = fs.readFileSync(`../dist/lib/cazan.min.js`)
-    }
-    else if(url === "/") {
-        resContent = fs.readFileSync(`./index.html`)
-    }
-    else {
+    if(PATHS[url]) {
+        resContent = fs.readFileSync(PATHS[url])
+    } else {
         try {
             resContent = fs.readFileSync(`.${url}`)
         } catch (e) {}  // file not found
