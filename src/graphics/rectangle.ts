@@ -1,7 +1,7 @@
 import {CwExport} from "../types/cw"
 import {ImageHandlingInterface, RectangleConstructorInterface} from "../types/graphics"
 import {Graphic} from "./graphic"
-import {NativeImage} from "../assets/native-image"
+import {NativeImage} from "../multimedia"
 
 export class Rectangle extends Graphic implements ImageHandlingInterface {
     private image?: CanvasImageSource
@@ -54,8 +54,13 @@ export class Rectangle extends Graphic implements ImageHandlingInterface {
         )
     }
 
-    setImage(image: CanvasImageSource) {
-        this.image = image
+    setImage(image: CanvasImageSource | string) {
+        if(typeof image === "string") {
+            this.image = new NativeImage()
+            this.image.src = image
+        } else {
+            this.image = image
+        }
     }
 
     getImage() {

@@ -6,7 +6,7 @@ import {
 } from "../types/graphics"
 import {CwExport} from "../types/cw"
 import {Graphic} from "./graphic"
-import {NativeImage} from "../assets/native-image"
+import {NativeImage} from "../multimedia"
 import {setLineStyle, setFill} from "../styles"
 
 export class Circle extends Graphic implements CurveInterface, ImageHandlingInterface {
