@@ -35,10 +35,6 @@ export class Graphic {
         this.game.unregisterGraphic(this.id)
     }
 
-    hide(): void {
-        this.toDisplay = false
-    }
-
     setupStylesForDrawing() {
         !this.styles ? this.setDefaultStyles() : undefined
 
@@ -93,6 +89,14 @@ export class Graphic {
 
     getDimensions() {
         return this.dimensions
+    }
+
+    show(): void {
+        this.toDisplay = true
+    }
+
+    hide(): void {
+        this.toDisplay = false
     }
 
     toggleDisplay() {

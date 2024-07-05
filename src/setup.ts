@@ -1,37 +1,35 @@
-import {ContextNotFoundException} from "./exceptions/index"
+import {ContextNotFoundException} from "./exceptions"
 import {Config, CRenderingContext} from "./types/global"
 import {Game} from "./game"
 import {permissions} from "./events"
-import {checkAndEnableMultimediaAutoplay} from "./events/permissions";
 
 /**
  * Setup cazan
  * @param canvasSelector
  * @param context
  * @param fps
- * @param cAssetsPath
  * @returns {Game | ContextNotFoundException} -> Game or ContextNotFoundException
  * @throws ContextNotFoundException
  */
 export async function setup(
     canvasSelector: string,
     context: string,
-    fps?: number,
-    cAssetsPath = '/.cazan/config.json'
+    fps?: number
 ): Promise<Game | ContextNotFoundException> {
     let canvas: HTMLCanvasElement | null = document.querySelector(canvasSelector)
     let config: Config
 
     if(canvas?.getContext) {
         try {
-            config = await (await fetch(cAssetsPath)).json()
+            config = await (await fetch('/.cazan/config.json')).json()
         } catch (e) {
             console.info("ConfigFileNotFound: cazan's config file not found. Applying default config. (cazan)")
-            console.warn("You should set a config file for production! (cazan)")
+            console.warn("You should set a config file for production! You just have to create a config file " +
+                "at `/.cazan/config.json` (cazan)")
             config = {
                 name: "MyGame",
                 version: "0.1",
-                author: "john doe",
+                authors: [],
                 plugins: []
             }
         }
