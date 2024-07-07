@@ -1,6 +1,6 @@
 # Audio
 
-There's how to use cazan assets' API for audios. We'll use the ``cazan.assets`` namespace here.
+There's how to use cazan assets' API for audios. We'll use the ``cazan.multimedia`` namespace here.
 
 ## Demonstration
 
