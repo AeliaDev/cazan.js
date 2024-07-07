@@ -52,6 +52,10 @@ export class Group {
         this.graphicsRelativesPositions[graphicName] = newPosition
     }
 
+    getGraphicsRelativePosition(graphicName: string) {
+        return this.graphicsRelativesPositions[graphicName]
+    }
+
     getGraphicsRelativePositions() {
         return this.graphicsRelativesPositions
     }
