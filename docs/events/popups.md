@@ -29,14 +29,16 @@ Use it when you want a text input from a user.
 
 ````js
 let username = await io.getUserInput({
-    title: "myGame", 
-    msg: "What's your name?", 
+    title: "myGame",
+    msg: "What's your name?",
     promptPlaceholder: "John Doe, ..."
 })
 ````
 
 !!!info
-    The user won't be able to click on the confirm button if the input does not belong to [minLength; maxLength] (if not defined, it's [0;255])
+You can set a minimum and a maximum length to the input, by adding a `minLength` and/or a `maxLength`. The user
+won't be able to click on the confirm button if the input does not belong to [minLength; maxLength] (if not defined,
+it's [0;255])
 
 
 ## Using the Popup API
@@ -64,27 +66,27 @@ popup.removePopup() //(1)!
 By default, cazan applies a default style on popups;
 
 ??? info "cazan popups' default style"
-    ````css
-    #cazan-popup{
-        flex-direction: column; gap: 15px;
-        padding: 10px;
-        background-color: #fff; color: #000;
-        min-width: 200px;
-        box-shadow: 0.5px 0.5px 5px 1px #111;
-        border-radius: 1.5px;
-        font-family: monospace;
-    }
-    #cazan-popup h1 { margin: 0; }
-    #cazan-popup p { margin: 0; text-align: center; }
-    #cazan-popup div { display: flex; justify-content: space-around; }
-    ````
+````css
+#cazan-popup{
+flex-direction: column; gap: 15px;
+padding: 10px;
+background-color: #fff; color: #000;
+min-width: 200px;
+box-shadow: 0.5px 0.5px 5px 1px #111;
+border-radius: 1.5px;
+font-family: monospace;
+}
+#cazan-popup h1 { margin: 0; }
+#cazan-popup p { margin: 0; text-align: center; }
+#cazan-popup div { display: flex; justify-content: space-around; }
+````
 In fact, it appends a `<style id="cazan-popup-style" text="text/css">` in the end of the `<head>` of your HTML document.
 
 !!!tip
-    But if you define manually this HTML tag and putting in custom CSS to customize the popups, Cazan won't override it, and your popup will be customized.
+If you define manually this HTML tag and putting in custom CSS to customize the popups, Cazan won't override it, and your popup will be customized.
 
 !!! warning
-    Attention: you can customize everything you want but if you want that it keeps working, don't customize `display`, `position` or `z-index`, these properties are needed because they will be used by cazan.
+Attention: you can customize everything you want but if you want that it keeps working, don't customize `display`, `position` or `z-index`, these properties are needed because they will be used by Cazan.
 
 ## Reference
 

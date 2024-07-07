@@ -72,7 +72,7 @@ let myText = new graphics.Text({
 ````
 
 !!!note
-    For texts, you must provide a different color for the text and for the background of the text. That's better for reading it. 
+    For texts, you must provide a different color for the text and for the background of the text. That's better for reading it.
 
 !!!tip
     If the styles aren't set on an element, Cazan will use the latest created element style. But attention: you have to style the first element!
@@ -96,7 +96,7 @@ Same thing as ``styles.setFill()`` but it's for stroke.
 
 #### setLineStyle(game, options)
 
-Customize the drawing line options. 
+Customize the drawing line options.
 
 Note: ``options``'s type is ``LineStyleInterface``.
 
@@ -136,7 +136,7 @@ interface TextStyleInterface {
 }
 ````
 
-#### GraphicStylesInterface 
+#### GraphicStylesInterface
 
 ````ts
 interface GraphicStylesInterface {

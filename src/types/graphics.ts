@@ -13,9 +13,22 @@ export interface Dimensions {
 }
 
 export interface ImageHandlingInterface {
-    setImage(image: CanvasImageSource): void
+    setImage(image: CanvasImageSource | string): void
     getImage(): CanvasImageSource | null
     getImageSource(): string | null
+}
+
+export declare type SpriteImage = {
+    image: CanvasImageSource | string,
+    /**
+     * mandatory if Cazanw (or other plugin that need it) is used, it's the hash that permits to this plugin to identify
+     * the images
+     */
+    imgHash?: string,
+    /**
+     * in milliseconds
+     */
+    time: number
 }
 
 export interface CurveInterface {

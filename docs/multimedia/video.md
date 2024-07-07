@@ -1,19 +1,20 @@
 # Video
 
-There's how to use cazan assets' API for videos. We'll use the ``cazan.assets`` and the ``cazan.graphics`` namespaces here.
+There's how to use cazan assets' API for videos. We'll use the ``cazan.multimedia`` and the ``cazan.graphics`` namespaces here.
 
 ## Demonstration
 
 Little example:
 ````js
-let screen = new graphics.Rectangle({game: game, position: {x: 10, y: 200}, dimensions: {width: 150, lenght: 100}})
-let video = new assets.Video(screen, ["video.mp4"])  //(1)!
+let screen = new graphics.Rectangle({ /* ... */}) //(1)!
+let video = new assets.Video(screen, ["video.mp4"]) //(2)!
 
 video.play()
 video.setLoop(true)
 ````
 
-1. Here put the paths to the sources of the video. This may be useful for cross-browser compatibility. The screen here is just the rectangle element that will display the video.
+1. The screen here is just the rectangle element that will display the video.
+2. Here put the paths to the sources of the video. This may be useful for cross-browser compatibility.
 
 This will create a `<div id="cazan-videos-container">` at the end of your body tag in your HTML page. In this div cazan will add for each audio a `<video id="cazan-video-{id}>` and in each of them there will be as `<source>` as required.
 

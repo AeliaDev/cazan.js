@@ -17,6 +17,8 @@ nav:
       - graphics/circle.md
       - graphics/ellipse.md
       - graphics/text.md
+      - graphics/sprites.md
+      - graphics/groups.md
       - graphics/styling.md
   - Events:
       - events/index.md
@@ -31,6 +33,18 @@ nav:
       - utils/fps.md
   - Reference:
       - reference/index.md
+      - General:
+          - reference/general/game.md
+          - reference/general/setup.md
+          - reference/general/config.md
+      - Graphics:
+          - reference/graphics/shapes.md
+          - reference/graphics/other-utils.md
+      - Utils:
+          - reference/utils/events.md
+          - reference/utils/popup.md
+          - reference/utils/multimedia.md
+          - reference/utils/styles.md
   - Community:
       - community/index.md
       - community/licence.md

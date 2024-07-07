@@ -3,7 +3,7 @@ import * as cazan from "/cazan.js"
 
 async function runApp() {
     let game = await cazan.setup("#game", "2d")
-    let audio = new cazan.assets.Audio(["audio.mp3"])
+    let audio = new cazan.multimedia.Audio(["audio.mp3"])
 
     game.setSize(600, 350)
     game.setFps(await game.getScreenRefreshRate())  // set the game FPS to the user's screen refresh rate
@@ -14,7 +14,7 @@ async function runApp() {
     //await cazan.events.io.showMsg({title: "Game", msg: 'Game starting', btnText: "Ok"})
     //console.log(await cazan.events.io.getUserConfirm({title: "Game", msg: 'Do you want to start?'}))
     //console.log(await cazan.events.io.getUserInput({title: "Game", msg: "What's your name?", promptPlaceholder: "John Doe, ..."}))
-  
+
     // ... or create one from your own
     /*const popup = new cazan.utils.Popup({
         title: "Popup",
@@ -88,7 +88,7 @@ async function runApp() {
         position: {x: 10, y: 200},
         dimensions: {width: 150, height: 100}
     })
-    let video = new cazan.assets.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
+    let video = new cazan.multimedia.Video(testRect2, ["video.mp4"])  // video from https://developer.mozilla.org/fr/docs/Web/HTML/Element/video
 
     video.play()
     video.setLoop(true)
@@ -156,6 +156,36 @@ async function runApp() {
             }
         }
     })
+
+    let head = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 0, y: 0},
+        dimensions: {width: 50, height: 50},
+        styles: {graphic: {color: "rgba(255,165,0,1)", type: "fill"}},
+        toDisplay: false
+    })
+
+    let body = new cazan.graphics.Rectangle({
+        game: game,
+        position: {x: 0, y: 50},
+        dimensions: {width: 50, height: 100},
+        styles: {graphic: {color: "rgba(0,0,0,1)",type: "fill"}},
+        toDisplay: false
+    })
+
+    let man = new cazan.graphics.Group(
+        "man",
+        {x: 100, y: 100},
+        {
+            "head": head,
+            "body": body
+        }
+    )
+    man.show()
+
+    setInterval(() => {
+        man.setPosition({x: man.getPosition().x + 25})
+    }, 1000)
 
     game.update()
 }
